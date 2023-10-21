@@ -11,26 +11,26 @@
 
 @font-face {
   font-family: 'Roboto';
-  src: url('../../public/fonts/Roboto-Regular.ttf');
+  src: url('../public/fonts/Roboto-Regular.ttf');
   font-style: normal;
   font-weight: normal;
 }
 @font-face {
   font-family: 'Roboto';
-  src: url('../../public/fonts/Roboto-Bold.ttf');
+  src: url('../public/fonts/Roboto-Bold.ttf');
   font-style: normal;
   font-weight: 700;
 }
 @font-face {
   font-family: 'Roboto';
-  src: url('../../public/fonts/Roboto-Black.ttf');
+  src: url('../public/fonts/Roboto-Black.ttf');
   font-style: normal;
   font-weight: 900;
 }
 
 @font-face {
   font-family: 'Roboto';
-  src: url('../../public/fonts/Roboto-Medium.ttf');
+  src: url('../public/fonts/Roboto-Medium.ttf');
   font-style: normal;
   font-weight: 500;
 }

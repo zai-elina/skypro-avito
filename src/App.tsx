@@ -1,9 +1,8 @@
-import React from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React, { FC } from 'react'
+import AppRoutes from './routes/Routes'
 
-function App() {
-  return <div></div>
+const App: FC = () => {
+  return <AppRoutes />
 }
 
 export default App
