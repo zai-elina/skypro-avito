@@ -1,0 +1,10 @@
+.mainSearch {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 0;
+  max-width: 1178px;
+  margin: 0 auto;
+  padding: 31px 10px 0px;
+}

@@ -1,0 +1,9 @@
+.logo {
+  width: 54px;
+  height: auto;
+}
+.logoMob {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
