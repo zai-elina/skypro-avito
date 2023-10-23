@@ -13,3 +13,11 @@
   margin: 0 auto;
   background-color: #ffffff;
 }
+@media screen and (max-width: 590px) {
+  .container {
+    width: 100%;
+    min-width: 320px;
+    min-height: 100vh;
+    background-color: #ffffff;
+  }
+}

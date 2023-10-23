@@ -10,7 +10,7 @@ const Logo = () => {
   return (
     <Link to="/">
       {isMobile ? (
-        <img className={classes.logo} src="./img/logo-mob.png" alt="logo" />
+        <img className={classes.logoMob} src="./img/logo-mob.png" alt="logo" />
       ) : (
         <img className={classes.logo} src="./img/logo.png" alt="logo" />
       )}

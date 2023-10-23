@@ -3,7 +3,9 @@
   height: auto;
 }
 .logoMob {
-  display: block;
   width: 32px;
-  height: 32px;
+  height: auto;
+  display: block;
+  -o-object-fit: cover;
+  object-fit: cover;
 }

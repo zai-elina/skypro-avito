@@ -9,6 +9,21 @@
   box-sizing: border-box;
 }
 
+a,
+a:visited {
+  text-decoration: none;
+  font-family: 'StratosSkyeng', sans-serif;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul li {
+  list-style: none;
+}
+
 @font-face {
   font-family: 'Roboto';
   src: url('../public/fonts/Roboto-Regular.ttf');

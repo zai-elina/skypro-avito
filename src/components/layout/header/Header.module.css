@@ -10,3 +10,8 @@
   align-items: center;
   justify-content: end;
 }
+@media screen and (max-width: 590px) {
+  .header {
+    display: none;
+  }
+}

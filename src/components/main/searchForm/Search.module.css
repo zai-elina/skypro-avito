@@ -35,18 +35,6 @@
   font-size: 16px;
   line-height: 24px;
 }
-.searchTextMob {
-  display: inline-block;
-  width: 100%;
-  height: 32px;
-  border: none;
-  border-radius: 30px;
-  background-color: #ffffff;
-  padding: 5px 17px;
-  font-size: 14px;
-  line-height: 21px;
-  color: #000000;
-}
 .searchBtn {
   margin-left: 10px;
   width: 158px;
@@ -61,4 +49,46 @@
 .searchBtn:hover {
   background-color: #0080c1;
   cursor: pointer;
+}
+@media screen and (max-width: 590px) {
+  .searchForm {
+    margin-left: 10px;
+    max-width: 1044px;
+    width: 100%;
+    display: flex;
+  }
+  .searchText {
+    display: none;
+  }
+  .searchTextMob {
+    display: inline-block;
+    width: 100%;
+    height: 32px;
+    border: none;
+    border-radius: 30px;
+    background-color: #ffffff;
+    padding: 5px 17px;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000000;
+  }
+  .searchTextMob::-moz-placeholder {
+    background-color: transparent;
+    color: #b3b3b3;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+  }
+  .searchTextMob::placeholder {
+    background-color: transparent;
+    color: #b3b3b3;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+  }
+  .searchBtn {
+    display: none;
+  }
 }
