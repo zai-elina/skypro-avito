@@ -1,0 +1,47 @@
+.modalInput {
+  width: 100%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #d0cece;
+  padding: 8px 1px;
+}
+.modalInput::-moz-placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.05px;
+  color: #d0cece;
+}
+.modalInput::placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.05px;
+  color: #d0cece;
+}
+
+@media screen and (max-width: 768px) {
+  .modalInput {
+    width: 100%;
+    border: 1px solid #d0cece;
+    padding: 9px 17px;
+    border-radius: 30px;
+  }
+  .modalInput::-moz-placeholder {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #b3b3b3;
+  }
+  .modalInput::placeholder {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #b3b3b3;
+  }
+}
