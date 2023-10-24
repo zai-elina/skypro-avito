@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: end;
 }
-@media screen and (max-width: 590px) {
+@media screen and (max-width: 620px) {
   .header {
     display: none;
   }

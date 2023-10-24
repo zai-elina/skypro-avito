@@ -1,13 +1,13 @@
 import React, { FC } from 'react'
-import Logo from '../../components/layout/logo/Logo'
 import classes from './ProfilePage.module.css'
+import MainMenu from '../../components/mainMenu/MainMenu'
 
 const ProfilePage: FC = () => {
   return (
     <main>
       <div className={classes.mainContainer}>
         <div className={classes.mainCenterBlock}>
-          <Logo />
+          <MainMenu />
         </div>
       </div>
     </main>

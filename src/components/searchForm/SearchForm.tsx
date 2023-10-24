@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { FC } from 'react'
 import classes from './Search.module.css'
 import { useMediaQuery } from 'react-responsive'
+import ButtonMain from '../layout/buttons/buttonMain/ButtonMain'
 
-const SearchForm = () => {
+const SearchForm: FC = () => {
   const isMobile = useMediaQuery({
     query: '(max-width: 590px)',
   })
@@ -16,15 +17,16 @@ const SearchForm = () => {
           name="search-mob"
         />
       ) : (
-        <input
-          className={classes.searchText}
-          type="search"
-          placeholder="Поиск по объявлениям"
-          name="search"
-        />
+        <>
+          <input
+            className={classes.searchText}
+            type="search"
+            placeholder="Поиск по объявлениям"
+            name="search"
+          />
+          <ButtonMain text="Найти" onClick={() => console.log('search')} />
+        </>
       )}
-
-      <button className={classes.searchBtn}>Найти</button>
     </form>
   )
 }

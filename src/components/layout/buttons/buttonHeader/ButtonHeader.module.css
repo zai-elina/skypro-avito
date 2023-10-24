@@ -8,5 +8,4 @@
 .btn:hover {
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid #ffffff;
-  cursor: pointer;
 }

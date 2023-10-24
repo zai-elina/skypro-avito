@@ -14,7 +14,7 @@
 }
 
 @media screen and (max-width: 620px) {
-  .main__container {
+  .mainContainer {
     padding: 85px 0px 84px;
   }
   .mainCenterBlock {

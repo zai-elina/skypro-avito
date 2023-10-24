@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive'
 
 const Logo = () => {
   const isMobile = useMediaQuery({
-    query: '(max-width: 590px)',
+    query: '(max-width: 620px)',
   })
   return (
     <Link to="/">

@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import classes from './Header.module.css'
-import Button from '../button/Button'
+import ButtonHeader from '../buttons/buttonHeader/ButtonHeader'
 import { useNavigate } from 'react-router-dom'
 
 const Header: FC = () => {
@@ -25,19 +25,19 @@ const Header: FC = () => {
       <nav className={classes.headerNav}>
         {isAuth ? (
           <div style={{ display: 'flex', columnGap: '10px' }}>
-            <Button
+            <ButtonHeader
               text="Разместить объявление"
               style={styleHeaderBtn}
               onClick={() => console.log('add')}
             />
-            <Button
+            <ButtonHeader
               text="Личный кабинет"
               style={styleHeaderBtn}
               onClick={openProfile}
             />
           </div>
         ) : (
-          <Button
+          <ButtonHeader
             text="Вход в личный кабинет"
             style={styleHeaderBtn}
             onClick={openLoginForm}
