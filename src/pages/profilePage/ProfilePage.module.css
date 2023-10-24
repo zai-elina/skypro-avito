@@ -1,0 +1,24 @@
+.mainContainer {
+  max-width: 1178px;
+  margin: 0 auto;
+  padding: 0px 10px 79px;
+}
+@media screen and (max-width: 890px) {
+  .mainContainer {
+    padding: 85px 0px 84px;
+  }
+  .mainCenterBlock {
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .main__container {
+    padding: 85px 0px 84px;
+  }
+  .mainCenterBlock {
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}

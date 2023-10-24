@@ -2,11 +2,12 @@ import React, { FC } from 'react'
 import classes from './Button.module.css'
 
 interface IButtonProps {
+  text: string
   style?: React.CSSProperties
   onClick: () => void
 }
 
-const Button: FC<IButtonProps> = ({ style, onClick }) => {
+const Button: FC<IButtonProps> = ({ text, style, onClick }) => {
   return (
     <button
       className={classes.btn}
@@ -14,7 +15,7 @@ const Button: FC<IButtonProps> = ({ style, onClick }) => {
       style={style}
       onClick={onClick}
     >
-      Вход в личный кабинет
+      {text}
     </button>
   )
 }
