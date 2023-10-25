@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { FC } from 'react'
 import classes from './CardsSection.module.css'
 import Card from './card/Card'
 
-const CardsSection = () => {
+const CardsSection: FC<{ title: string }> = ({ title }) => {
   return (
     <section className={classes.mainContainer}>
-      <h2 className={classes.mainTitle}>Объявления</h2>
+      <h2>{title}</h2>
       <div className={classes.cardsContent}>
         <div className={classes.cards}>
           {Array(6)

@@ -11,7 +11,7 @@ const MainPage: FC = () => {
         <Logo />
         <SearchForm />
       </div>
-      <CardsSection />
+      <CardsSection title="Объявления" />
     </main>
   )
 }

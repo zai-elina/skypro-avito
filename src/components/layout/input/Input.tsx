@@ -5,15 +5,17 @@ interface InputProps {
   type: string
   name: string
   placeholder: string
+  value?: string
 }
 
-const Input: FC<InputProps> = ({ type, name, placeholder }) => {
+const Input: FC<InputProps> = ({ type, name, placeholder, value }) => {
   return (
     <input
       className={classes.modalInput}
       type={type}
       name={name}
       placeholder={placeholder}
+      value={value ? value : ''}
     />
   )
 }
