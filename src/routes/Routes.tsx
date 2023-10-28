@@ -6,12 +6,14 @@ import LoginPage from '../pages/loginPage/LoginPage'
 import RegisterPage from '../pages/registerPage/RegisterPage'
 import { ProtectedRoute } from './ProtectedRoute'
 import ProfilePage from '../pages/profilePage/ProfilePage'
+import ArticlePage from '../pages/articlePage/ArticlePage'
 
 const AppRoutes: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<LayoutPage />}>
         <Route path="/" element={<MainPage />} />
+        <Route path="/article/:id" element={<ArticlePage />} />
         <Route element={<ProtectedRoute />}>
           <Route path={'/profile'} element={<ProfilePage />} />
         </Route>
