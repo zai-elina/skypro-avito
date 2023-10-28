@@ -3,6 +3,13 @@
   margin: 0 auto;
   padding: 0px 0px 79px;
 }
+
+.mainArticle {
+  max-width: 1178px;
+  padding: 0 0 70px;
+  margin: 0 auto;
+  padding: 0 5px 70px;
+}
 @media screen and (max-width: 890px) {
   .mainContainer {
     padding: 85px 0px 84px;
@@ -20,5 +27,13 @@
   .mainCenterBlock {
     margin: 0 auto;
     padding: 0 20px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .mainArticle {
+    max-width: 1178px;
+    width: 100%;
+    padding: 55px 0 0px;
+    margin: 0 auto;
   }
 }
