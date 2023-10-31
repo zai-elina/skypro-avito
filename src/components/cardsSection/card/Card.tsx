@@ -1,26 +1,39 @@
 import React, { FC } from 'react'
 import classes from './Card.module.css'
 import { Link } from 'react-router-dom'
+import { IArticle } from '../../../types'
+import 'dayjs/locale/ru' // load on demand
+import dayjs from 'dayjs'
 
-const Card: FC = () => {
-  const id = 0
+dayjs.locale('ru')
+interface IPropsCard {
+  article: IArticle
+}
+const imageUrl = 'http://localhost:8090/'
+
+const Card: FC<IPropsCard> = ({ article }) => {
+  const { id, title, price, user, created_on, images } = article
+
   return (
     <div className={classes.cardContainer}>
       <div className={classes.card}>
         <div className={classes.cardImage}>
           <Link to={`/article/${id}`}>
-            <img src="#" alt="picture" />
+            {images.length !== 0 && (
+              <img src={`${imageUrl}${images[0].url}`} alt={title} />
+            )}
+            {title}
           </Link>
         </div>
         <div>
           <Link to={`/article/${id}`}>
-            <h3 className={classes.cardTitle}>
-              Ракетка для большого тенниса Triumph Pro ST
-            </h3>
+            <h3 className={classes.cardTitle}>{title}</h3>
           </Link>
-          <p className={classes.cardPrice}>2&nbsp;200&nbsp;₽</p>
-          <p className={classes.cardPlace}>Санкт Петербург</p>
-          <p className={classes.cardDate}>Сегодня в&nbsp;10:45</p>
+          <p className={classes.cardPrice}>{price}₽</p>
+          <p className={classes.cardPlace}>{user.city}</p>
+          <p className={classes.cardDate}>
+            {dayjs(created_on).format('MMMM D, YYYY HH:mm')}
+          </p>
         </div>
       </div>
     </div>
