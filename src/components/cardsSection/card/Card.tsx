@@ -2,14 +2,12 @@ import React, { FC } from 'react'
 import classes from './Card.module.css'
 import { Link } from 'react-router-dom'
 import { IArticle } from '../../../types'
-import 'dayjs/locale/ru' // load on demand
 import dayjs from 'dayjs'
+import { hostDomain } from '../../../constants'
 
-dayjs.locale('ru')
 interface IPropsCard {
   article: IArticle
 }
-const imageUrl = 'http://localhost:8090/'
 
 const Card: FC<IPropsCard> = ({ article }) => {
   const { id, title, price, user, created_on, images } = article
@@ -20,7 +18,7 @@ const Card: FC<IPropsCard> = ({ article }) => {
         <div className={classes.cardImage}>
           <Link to={`/article/${id}`}>
             {images.length !== 0 && (
-              <img src={`${imageUrl}${images[0].url}`} alt={title} />
+              <img src={`${hostDomain}/${images[0].url}`} alt={title} />
             )}
             {title}
           </Link>

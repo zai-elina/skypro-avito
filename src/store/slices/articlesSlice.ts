@@ -3,10 +3,12 @@ import { IArticle } from '../../types'
 
 interface IArticleStore {
   articleList: IArticle[]
+  selectedArticle: IArticle
 }
 
 const initialState: IArticleStore = {
   articleList: [],
+  selectedArticle: {} as IArticle,
 }
 
 export const articlesSlice = createSlice({
@@ -16,9 +18,12 @@ export const articlesSlice = createSlice({
     setArticleList: (state, action) => {
       state.articleList = action.payload
     },
+    changeSelectedArticle: (state, action) => {
+      state.selectedArticle = action.payload
+    },
   },
 })
 
-export const { setArticleList } = articlesSlice.actions
+export const { setArticleList, changeSelectedArticle } = articlesSlice.actions
 
 export default articlesSlice.reducer

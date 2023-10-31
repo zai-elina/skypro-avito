@@ -1,13 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-
-const hostDomain = `http://localhost:8090`
+import { hostDomain } from '../../constants'
+import { IArticle } from '../../types'
 
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({ baseUrl: hostDomain }),
-  tagTypes: ['ArticleList'],
+  tagTypes: ['ArticleList', 'Article'],
   endpoints: (builder) => ({
-    getArticleListData: builder.query({
+    getArticleListData: builder.query<IArticle[], unknown>({
       query: () => `ads`,
       providesTags: (result) =>
         Array.isArray(result)

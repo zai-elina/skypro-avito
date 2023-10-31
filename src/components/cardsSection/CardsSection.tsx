@@ -22,7 +22,7 @@ const CardsSection: FC<{ title: string }> = ({ title }) => {
       <div className={classes.cardsContent}>
         {!isLoading && (
           <div className={classes.cards}>
-            {data.map((article: IArticle) => (
+            {data?.map((article: IArticle) => (
               <Card key={article.id} article={article} />
             ))}
           </div>

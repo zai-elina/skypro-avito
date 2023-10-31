@@ -2,23 +2,30 @@ import React, { FC } from 'react'
 import ButtonMain from '../layout/buttons/buttonMain/ButtonMain'
 import { Link } from 'react-router-dom'
 import classes from './Article.module.css'
+import { useAppSelector } from '../../store/reduxHook'
+import { selectSelectedArtile } from '../../store/selectors/articleSelectors'
+import dayjs from 'dayjs'
+import { hostDomain } from '../../constants'
 
 const Article: FC = () => {
+  const article = useAppSelector(selectSelectedArtile)
+  const { title, price, user, created_on, images } = article
+
   return (
     <div className={classes.article}>
       <div className={classes.articleLeft}>
         <div className={classes.articleImgContainer}>
           <div className={classes.articleImg}>
-            <img src="" alt="" />
+            {images && images.length !== 0 && (
+              <img src={`${hostDomain}/${images[0].url}`} alt="" />
+            )}
           </div>
           <div className={classes.articleImgBar}>
-            {Array(6)
-              .fill('')
-              .map((item, index) => (
-                <div className={classes.articleImgBarItem} key={index}>
-                  <img src="" alt="" />
-                </div>
-              ))}
+            {images?.map((img) => (
+              <div className={classes.articleImgBarItem} key={img.id}>
+                <img src={`${hostDomain}/${img.url}`} alt="" />
+              </div>
+            ))}
           </div>
           <div className={classes.articleImgBarMob}>
             {/* !!!подключить слайдер */}
@@ -32,15 +39,15 @@ const Article: FC = () => {
       </div>
       <div className={classes.articleRight}>
         <div className={classes.articleВlock}>
-          <h3 className={classes.acrticleTitle}>
-            Ракетка для большого тенниса Triumph Pro STС Б/У
-          </h3>
+          <h3 className={classes.acrticleTitle}>{title}</h3>
           <div>
-            <p className={classes.articleTextInfo}>Сегодня в 10:45</p>
-            <p className={classes.articleTextInfo}>Санкт-Петербург</p>
+            <p className={classes.articleTextInfo}>
+              {dayjs(created_on).format('D MMMM, YYYY HH:mm')}
+            </p>
+            <p className={classes.articleTextInfo}>{user?.city}</p>
             <Link to="/">23 отзыва</Link>
           </div>
-          <p className={classes.articlePrice}>2 200 ₽</p>
+          <p className={classes.articlePrice}>{price}</p>
           <ButtonMain
             text={`Показать телефон\n8 9XX XXX XX XX`}
             onClick={() => console.log('number')}
@@ -53,12 +60,12 @@ const Article: FC = () => {
           />
           <div className={classes.articleAuthor}>
             <div className={classes.articleAuthorImg}>
-              <img src="" alt="" />
+              <img src={`${hostDomain}/${user?.avatar}`} alt="" />
             </div>
             <div style={{ marginLeft: '12px' }}>
-              <p className={classes.authorName}>Кирилл</p>
+              <p className={classes.authorName}>{user?.name}</p>
               <p className={classes.articleTextInfo}>
-                Продает товары с августа 2021
+                Продает товары {user?.sells_from}
               </p>
             </div>
           </div>

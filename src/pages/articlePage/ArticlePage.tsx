@@ -1,20 +1,30 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import MainMenu from '../../components/mainMenu/MainMenu'
 import classes from './ArticlePage.module.css'
 import Article from '../../components/article/Article'
 import ArticleDesc from '../../components/article/ArticleDesc/ArticleDesc'
+import { useGetArticleDataQuery } from '../../store/services/articleList.api'
+import { useAppDispatch } from '../../store/reduxHook'
+import { changeSelectedArticle } from '../../store/slices/articlesSlice'
 
 const ArticlePage: FC = () => {
   const { id } = useParams()
+  const { data, isLoading, error } = useGetArticleDataQuery(id ? +id : 0)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    if (!error && !isLoading) {
+      dispatch(changeSelectedArticle(data))
+    }
+  }, [data, dispatch, error, isLoading])
+
   return (
     <main>
       <div className={classes.mainContainer}>
         <div className={classes.mainCenterBlock}>
           <MainMenu />
-          <div className={classes.mainArticle}>
-            <Article />
-          </div>
+          <div className={classes.mainArticle}>{data && <Article />}</div>
 
           <div className={classes.mainContainer}>
             <ArticleDesc />

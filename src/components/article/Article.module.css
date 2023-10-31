@@ -27,11 +27,12 @@
   border-top: 2px solid #0080c1;
   border-left: 2px solid #0080c1;
 }
-.articleImg {
+.articleImg img {
   width: 480px;
   height: 480px;
   background-color: #f0f0f0;
   margin: 0 5px;
+  object-fit: cover;
 }
 .articleImgBar {
   margin-top: 30px;
