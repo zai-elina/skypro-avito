@@ -5,7 +5,10 @@ import SearchForm from '../../components/searchForm/SearchForm'
 import CardsSection from '../../components/cardsSection/CardsSection'
 import { useGetArticleListDataQuery } from '../../store/services/api'
 import { useAppDispatch } from '../../store/reduxHook'
-import { setArticleList } from '../../store/slices/articlesSlice'
+import {
+  changeSearchResultArticleList,
+  setArticleList,
+} from '../../store/slices/articlesSlice'
 
 const MainPage: FC = () => {
   const { data, isLoading, error } = useGetArticleListDataQuery({})
@@ -14,9 +17,10 @@ const MainPage: FC = () => {
   useEffect(() => {
     if (!error && !isLoading) {
       dispatch(setArticleList(data))
+      dispatch(changeSearchResultArticleList(data))
     }
   }, [data, isLoading, error, dispatch])
-  
+
   return (
     <main>
       <div className={classes.mainSearch}>

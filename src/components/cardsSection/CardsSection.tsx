@@ -3,10 +3,10 @@ import classes from './CardsSection.module.css'
 import Card from './card/Card'
 import { useAppSelector } from '../../store/reduxHook'
 import { IArticle } from '../../types'
-import { selectArtticleList } from '../../store/selectors/articleSelectors'
+import { selectSearchArticleList } from '../../store/selectors/articleSelectors'
 
 const CardsSection: FC<{ title: string }> = ({ title }) => {
-  const articleList = useAppSelector(selectArtticleList)
+  const articleList = useAppSelector(selectSearchArticleList)
 
   return (
     <section className={classes.mainContainer}>

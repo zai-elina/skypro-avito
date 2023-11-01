@@ -4,7 +4,7 @@ import { useMediaQuery } from 'react-responsive'
 import ButtonMain from '../layout/buttons/buttonMain/ButtonMain'
 import { useAppDispatch, useAppSelector } from '../../store/reduxHook'
 import { selectArtticleList } from '../../store/selectors/articleSelectors'
-import { setArticleList } from '../../store/slices/articlesSlice'
+import { changeSearchResultArticleList } from '../../store/slices/articlesSlice'
 
 const SearchForm: FC = () => {
   const isMobile = useMediaQuery({
@@ -17,13 +17,17 @@ const SearchForm: FC = () => {
 
   const onClick = () => {
     if (articleList) {
-      const searchResult = articleList.filter(({ title }) => {
-        if (title !== undefined) {
-          return title.toLowerCase().includes(search.toLowerCase())
-        }
-        return false
-      })
-      dispatch(setArticleList(searchResult))
+      if (search) {
+        const searchResult = articleList.filter(({ title }) => {
+          if (title !== undefined) {
+            return title.toLowerCase().includes(search.toLowerCase())
+          }
+          return false
+        })
+        dispatch(changeSearchResultArticleList(searchResult))
+      } else {
+        dispatch(changeSearchResultArticleList(articleList))
+      }
     }
   }
 

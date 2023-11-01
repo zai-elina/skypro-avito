@@ -4,11 +4,13 @@ import { IArticle } from '../../types'
 interface IArticleStore {
   articleList: IArticle[]
   selectedArticle: IArticle
+  searchResultArticleList: IArticle[]
 }
 
 const initialState: IArticleStore = {
   articleList: [],
   selectedArticle: {} as IArticle,
+  searchResultArticleList: [],
 }
 
 export const articlesSlice = createSlice({
@@ -21,9 +23,16 @@ export const articlesSlice = createSlice({
     changeSelectedArticle: (state, action) => {
       state.selectedArticle = action.payload
     },
+    changeSearchResultArticleList: (state, action) => {
+      state.selectedArticle = action.payload
+    },
   },
 })
 
-export const { setArticleList, changeSelectedArticle } = articlesSlice.actions
+export const {
+  setArticleList,
+  changeSelectedArticle,
+  changeSearchResultArticleList,
+} = articlesSlice.actions
 
 export default articlesSlice.reducer
