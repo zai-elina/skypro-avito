@@ -9,6 +9,8 @@ import {
   changeSearchResultArticleList,
   setArticleList,
 } from '../../store/slices/articlesSlice'
+import Skeleton from 'react-loading-skeleton'
+import SkeletonCardsSection from '../../components/cardsSection/SkeletonCardsSection'
 
 const MainPage: FC = () => {
   const { data, isLoading, error } = useGetArticleListDataQuery({})
@@ -27,7 +29,11 @@ const MainPage: FC = () => {
         <Logo />
         <SearchForm />
       </div>
-      <CardsSection title="Объявления" />
+      {isLoading ? (
+        <SkeletonCardsSection title={'Объявления'} />
+      ) : (
+        <CardsSection title="Объявления" />
+      )}
     </main>
   )
 }
