@@ -16,6 +16,7 @@ const CardsSection: FC<{ title: string }> = ({ title }) => {
           {articleList?.map((article: IArticle) => (
             <Card key={article.id} article={article} />
           ))}
+          {articleList?.length === 0 && <>Ничего не найдено</>}
         </div>
       </div>
     </section>

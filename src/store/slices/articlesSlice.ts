@@ -24,7 +24,7 @@ export const articlesSlice = createSlice({
       state.selectedArticle = action.payload
     },
     changeSearchResultArticleList: (state, action) => {
-      state.selectedArticle = action.payload
+      state.searchResultArticleList = action.payload
     },
   },
 })

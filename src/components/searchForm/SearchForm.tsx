@@ -15,7 +15,7 @@ const SearchForm: FC = () => {
   const dispatch = useAppDispatch()
   console.log(search)
 
-  const onClick = () => {
+  const searchData = () => {
     if (articleList) {
       if (search) {
         const searchResult = articleList.filter(({ title }) => {
@@ -40,6 +40,10 @@ const SearchForm: FC = () => {
           placeholder="Поиск"
           name="search-mob"
           value={search}
+          onChange={(e) => {
+            setSearch(e.target.value)
+            searchData()
+          }}
         />
       ) : (
         <>
@@ -49,9 +53,16 @@ const SearchForm: FC = () => {
             placeholder="Поиск по объявлениям"
             name="searchInput"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value)
+            }}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                searchData()
+              }
+            }}
           />
-          <ButtonMain text="Найти" onClick={onClick} />
+          <ButtonMain text="Найти" onClick={searchData} />
         </>
       )}
     </div>
