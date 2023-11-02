@@ -14,8 +14,9 @@ const AppRoutes: FC = () => {
       <Route path="/" element={<LayoutPage />}>
         <Route path="/" element={<MainPage />} />
         <Route path="/article/:id" element={<ArticlePage />} />
+        <Route path="/user/:id" element={<ProfilePage />} />
         <Route element={<ProtectedRoute />}>
-          <Route path={'/profile'} element={<ProfilePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Route>
         {/* <Route path="*" element={<NotFound />} /> */}
       </Route>

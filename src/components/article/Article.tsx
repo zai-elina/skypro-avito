@@ -58,17 +58,19 @@ const Article: FC = () => {
               marginLeft: '0',
             }}
           />
-          <div className={classes.articleAuthor}>
-            <div className={classes.articleAuthorImg}>
-              <img src={`${hostDomain}/${user?.avatar}`} alt="" />
+          <Link to={`/user/${user?.id}`}>
+            <div className={classes.articleAuthor}>
+              <div className={classes.articleAuthorImg}>
+                <img src={`${hostDomain}/${user?.avatar}`} alt="" />
+              </div>
+              <div style={{ marginLeft: '12px' }}>
+                <p className={classes.authorName}>{user?.name}</p>
+                <p className={classes.articleTextInfo}>
+                  Продает товары {user?.sells_from}
+                </p>
+              </div>
             </div>
-            <div style={{ marginLeft: '12px' }}>
-              <p className={classes.authorName}>{user?.name}</p>
-              <p className={classes.articleTextInfo}>
-                Продает товары {user?.sells_from}
-              </p>
-            </div>
-          </div>
+          </Link>
         </div>
       </div>
     </div>
