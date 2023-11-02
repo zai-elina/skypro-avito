@@ -9,7 +9,6 @@ import {
   changeSearchResultArticleList,
   setArticleList,
 } from '../../store/slices/articlesSlice'
-import Skeleton from 'react-loading-skeleton'
 import SkeletonCardsSection from '../../components/cardsSection/SkeletonCardsSection'
 
 const MainPage: FC = () => {
