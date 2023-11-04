@@ -4,7 +4,7 @@ import ButtonHeader from '../buttons/buttonHeader/ButtonHeader'
 import { useNavigate } from 'react-router-dom'
 
 const Header: FC = () => {
-  const isAuth = true
+  const isAuth = Boolean(localStorage.getItem('user'))
   const styleHeaderBtn = {
     width: '224px',
     height: '40px',

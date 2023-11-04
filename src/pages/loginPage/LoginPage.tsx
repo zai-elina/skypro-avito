@@ -8,7 +8,7 @@ const LoginPage: FC = () => {
     <div className={classes.wrapper}>
       <div className={classes.containerEnter}>
         <div className={classes.modalBlock}>
-          <form className={classes.modalFormLogin} id="formLogIn" action="#">
+          {/* <form className={classes.modalFormLogin} id="formLogIn" action="#">
             <div className={classes.modalLogo}>
               <img src="./img/logo_modal.png" alt="logo" />
             </div>
@@ -20,7 +20,7 @@ const LoginPage: FC = () => {
             <button className={classes.modalBtnSignup} id="btnSignUp">
               <Link to="/register">Зарегистрироваться</Link>
             </button>
-          </form>
+          </form> */}
         </div>
       </div>
     </div>

@@ -24,3 +24,16 @@ export interface IArticle {
   created_on: string
   user: IUser
 }
+
+export interface IFormFieldsRegister {
+  password: string
+  second_password: string
+  email: string
+  name?: string
+  surname?: string
+  city?: string
+  rules?: {
+    required?: string
+    pattern?: { value: RegExp; message: string }
+  }
+}

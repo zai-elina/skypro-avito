@@ -1,21 +1,30 @@
 import React, { FC } from 'react'
 import classes from './Input.module.css'
+import { UseFormRegister } from 'react-hook-form'
+import { IFormFieldsRegister } from '../../../types'
 
 interface InputProps {
   type: string
   name: string
   placeholder: string
   value?: string
+  register: UseFormRegister<IFormFieldsRegister>
+  rules?: { required?: string; pattern?: { value: RegExp; message: string } }
 }
 
-const Input: FC<InputProps> = ({ type, name, placeholder, value }) => {
+const Input: FC<InputProps> = ({
+  type,
+  name,
+  placeholder,
+  register,
+  rules,
+}) => {
   return (
     <input
       className={classes.modalInput}
       type={type}
-      name={name}
       placeholder={placeholder}
-      value={value ? value : ''}
+      {...register(name as keyof IFormFieldsRegister, rules)}
     />
   )
 }
