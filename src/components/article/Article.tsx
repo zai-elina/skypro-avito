@@ -1,15 +1,21 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import ButtonMain from '../layout/buttons/buttonMain/ButtonMain'
 import { Link } from 'react-router-dom'
 import classes from './Article.module.css'
-import { useAppSelector } from '../../store/reduxHook'
+import { useAppDispatch, useAppSelector } from '../../store/reduxHook'
 import { selectSelectedArtile } from '../../store/selectors/articleSelectors'
 import dayjs from 'dayjs'
 import { hostDomain } from '../../constants'
+import { changeSellerOfSelectedArticle } from '../../store/slices/articlesSlice'
 
 const Article: FC = () => {
   const article = useAppSelector(selectSelectedArtile)
   const { title, price, user, created_on, images } = article
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(changeSellerOfSelectedArticle(user))
+  }, [dispatch, user])
 
   return (
     <div className={classes.article}>

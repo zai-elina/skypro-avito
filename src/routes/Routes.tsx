@@ -5,8 +5,9 @@ import MainPage from '../pages/mainPage/MainPage'
 import LoginPage from '../pages/loginPage/LoginPage'
 import RegisterPage from '../pages/registerPage/RegisterPage'
 import { ProtectedRoute } from './ProtectedRoute'
-import ProfilePage from '../pages/profilePage/ProfilePage'
 import ArticlePage from '../pages/articlePage/ArticlePage'
+import SellerProfilePage from '../pages/sellerProfilePage/SellerProfilePage'
+import ProfilePage from '../pages/sellerProfilePage/SellerProfilePage'
 
 const AppRoutes: FC = () => {
   return (
@@ -14,7 +15,7 @@ const AppRoutes: FC = () => {
       <Route path="/" element={<LayoutPage />}>
         <Route path="/" element={<MainPage />} />
         <Route path="/article/:id" element={<ArticlePage />} />
-        <Route path="/user/:id" element={<ProfilePage />} />
+        <Route path="/user/:id" element={<SellerProfilePage />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<ProfilePage />} />
         </Route>

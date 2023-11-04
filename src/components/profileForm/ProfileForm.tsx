@@ -14,7 +14,7 @@ const ProfileForm: FC = () => {
                 <img src="#" alt="" />
               </a>
             </div>
-            <a className={classes.settingsChangePhoto} href="" target="_self">
+            <a className={classes.settingsChangePhoto} href="#" target="_self">
               Заменить
             </a>
           </div>

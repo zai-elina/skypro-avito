@@ -1,22 +1,23 @@
 import React, { FC } from 'react'
 import classes from './CardsSection.module.css'
 import Card from './card/Card'
-import { useAppSelector } from '../../store/reduxHook'
 import { IArticle } from '../../types'
-import { selectSearchArticleList } from '../../store/selectors/articleSelectors'
 
-const CardsSection: FC<{ title: string }> = ({ title }) => {
-  const articleList = useAppSelector(selectSearchArticleList)
+interface ICardsSection {
+  title: string
+  cards: IArticle[]
+}
 
+const CardsSection: FC<ICardsSection> = ({ title, cards }) => {
   return (
     <section className={classes.mainContainer}>
       <h2>{title}</h2>
       <div className={classes.cardsContent}>
         <div className={classes.cards}>
-          {articleList?.map((article: IArticle) => (
+          {cards?.map((article: IArticle) => (
             <Card key={article.id} article={article} />
           ))}
-          {articleList?.length === 0 && <>Ничего не найдено</>}
+          {cards?.length === 0 && <>Ничего не найдено</>}
         </div>
       </div>
     </section>

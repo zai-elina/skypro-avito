@@ -1,15 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { IArticle } from '../../types'
+import { IArticle, IUser } from '../../types'
 
 interface IArticleStore {
   articleList: IArticle[]
   selectedArticle: IArticle
+  sellerOfSelectedArticle: IUser
   searchResultArticleList: IArticle[]
 }
 
 const initialState: IArticleStore = {
   articleList: [],
   selectedArticle: {} as IArticle,
+  sellerOfSelectedArticle: {} as IUser,
   searchResultArticleList: [],
 }
 
@@ -26,6 +28,9 @@ export const articlesSlice = createSlice({
     changeSearchResultArticleList: (state, action) => {
       state.searchResultArticleList = action.payload
     },
+    changeSellerOfSelectedArticle: (state, action) => {
+      state.sellerOfSelectedArticle = action.payload
+    },
   },
 })
 
@@ -33,6 +38,7 @@ export const {
   setArticleList,
   changeSelectedArticle,
   changeSearchResultArticleList,
+  changeSellerOfSelectedArticle,
 } = articlesSlice.actions
 
 export default articlesSlice.reducer

@@ -14,7 +14,7 @@ const ProfilePage: FC = () => {
           <h2>Здравствуйте, {user.name}!</h2>
         </div>
         <ProfileForm />
-        <CardsSection title="Мои товары" />
+        <CardsSection title="Мои товары" cards={[]} />
       </div>
     </main>
   )
