@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import ButtonMain from '../layout/buttons/buttonMain/ButtonMain'
 import { Link } from 'react-router-dom'
 import classes from './Article.module.css'
@@ -7,11 +7,13 @@ import { selectSelectedArtile } from '../../store/selectors/articleSelectors'
 import dayjs from 'dayjs'
 import { hostDomain } from '../../constants'
 import { changeSellerOfSelectedArticle } from '../../store/slices/articlesSlice'
+import { maskString } from '../../utils/maskPhone'
 
 const Article: FC = () => {
   const article = useAppSelector(selectSelectedArtile)
   const { title, price, user, created_on, images } = article
   const dispatch = useAppDispatch()
+  const [phoneIsOpen, setPhoneIsOpen] = useState(false)
 
   useEffect(() => {
     dispatch(changeSellerOfSelectedArticle(user))
@@ -55,8 +57,14 @@ const Article: FC = () => {
           </div>
           <p className={classes.articlePrice}>{price}</p>
           <ButtonMain
-            text={`Показать телефон\n8 9XX XXX XX XX`}
-            onClick={() => console.log('number')}
+            text={`Показать телефон\n${
+              phoneIsOpen
+                ? user?.phone
+                : maskString(user?.phone ? user.phone : '')
+            }`}
+            onClick={() => {
+              setPhoneIsOpen(!phoneIsOpen)
+            }}
             style={{
               whiteSpace: 'pre-line',
               width: '214px',

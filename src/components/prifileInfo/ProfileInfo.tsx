@@ -1,14 +1,16 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import classes from './ProfileInfo.module.css'
 import ButtonMain from '../layout/buttons/buttonMain/ButtonMain'
 import { useAppSelector } from '../../store/reduxHook'
 import { selectSellerOfSelectedArtile } from '../../store/selectors/articleSelectors'
 import dayjs from 'dayjs'
 import { hostDomain } from '../../constants'
+import { maskString } from '../../utils/maskPhone'
 
 const ProfileInfo: FC = () => {
   const seller = useAppSelector(selectSellerOfSelectedArtile)
   const { name, city, sells_from, avatar, phone } = seller
+  const [phoneIsOpen, setPhoneIsOpen] = useState(false)
 
   return (
     <div className={classes.profileSell}>
@@ -33,13 +35,18 @@ const ProfileInfo: FC = () => {
             </div>
 
             <ButtonMain
-              text={`Показать телефон\n8 9XX XXX XX XX`}
-              onClick={() => console.log(phone)}
+              text={`Показать телефон\n${
+                phoneIsOpen ? phone : maskString(phone)
+              }`}
+              onClick={() => {
+                setPhoneIsOpen(!phoneIsOpen)
+              }}
               style={{
                 whiteSpace: 'pre-line',
                 width: '214px',
                 height: '62px',
                 marginLeft: '0',
+                marginTop: '10px',
               }}
             />
           </div>
