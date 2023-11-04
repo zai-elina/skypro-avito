@@ -19,7 +19,19 @@ export const userApi = api.injectEndpoints({
         }
       },
     }),
+    loginUser: builder.mutation<IUser, IFormFieldsRegister>({
+      query: (value) => {
+        return {
+          url: `auth/login`,
+          method: 'POST',
+          body: {
+            email: value.email,
+            password: value.password,
+          },
+        }
+      },
+    }),
   }),
 })
 
-export const { useRegisterUserMutation } = userApi
+export const { useRegisterUserMutation, useLoginUserMutation } = userApi

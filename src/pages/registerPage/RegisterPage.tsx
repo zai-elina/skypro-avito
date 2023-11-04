@@ -68,8 +68,6 @@ const RegisterPage: FC = () => {
 
   useEffect(() => {
     if (data) {
-      console.log(data)
-      localStorage.setItem('user', JSON.stringify(data))
       navigate('/login')
     }
   })
