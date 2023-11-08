@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import classes from './ProfileForm.module.css'
 import ButtonMain from '../layout/buttons/buttonMain/ButtonMain'
 import { useAppSelector } from '../../store/reduxHook'
@@ -23,6 +23,7 @@ const ProfileForm: FC = () => {
       phone: authUser.phone ? authUser.phone : '',
     },
   })
+  const [image, setImage] = useState<null | File>(null)
 
   useEffect(() => {
     reset({
@@ -35,6 +36,24 @@ const ProfileForm: FC = () => {
 
   const onSubmit = (data: any) => {
     console.log(data)
+  }
+
+  const uploadContent = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault()
+    const files = event.target.files
+    if (files && files.length > 0) {
+      setImage(files[0])
+      console.log(files[0])
+    }
+  }
+
+  const sendContent = (event: React.FormEvent) => {
+    event.preventDefault()
+    const formData = new FormData()
+    if (image) {
+      formData.append('file', image)
+      //api Запрос
+    }
   }
 
   return (
@@ -51,7 +70,18 @@ const ProfileForm: FC = () => {
                 />
               )}
             </div>
-            <div className={classes.settingsChangePhoto}>Заменить</div>
+            <a
+              className={classes.settingsChangePhoto}
+              onClick={(e) => sendContent(e)}
+              href="/"
+            >
+              Заменить
+            </a>
+            <input
+              type={'file'}
+              accept={'image/*'}
+              onChange={(e) => uploadContent(e)}
+            />
           </div>
           <div className={classes.settingsRight}>
             <form
