@@ -1,8 +1,42 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import classes from './ProfileForm.module.css'
 import ButtonMain from '../layout/buttons/buttonMain/ButtonMain'
+import { useAppSelector } from '../../store/reduxHook'
+import { selectUser } from '../../store/selectors/userSelector'
+import { useForm } from 'react-hook-form'
+import { hostDomain } from '../../constants'
+
+interface IProfileFormData {
+  name: string
+  surname: string
+  city: string
+  phone: string
+}
 
 const ProfileForm: FC = () => {
+  const authUser = useAppSelector(selectUser)
+  const { register, handleSubmit, reset } = useForm<IProfileFormData>({
+    defaultValues: {
+      name: authUser.name ? authUser.name : '',
+      surname: authUser.surname ? authUser.surname : '',
+      city: authUser.city ? authUser.city : '',
+      phone: authUser.phone ? authUser.phone : '',
+    },
+  })
+
+  useEffect(() => {
+    reset({
+      name: authUser.name,
+      surname: authUser.surname,
+      city: authUser.city,
+      phone: authUser.phone,
+    })
+  }, [authUser, reset])
+
+  const onSubmit = (data: any) => {
+    console.log(data)
+  }
+
   return (
     <div className={classes.mainProfile}>
       <div className={classes.profileContent}>
@@ -10,25 +44,28 @@ const ProfileForm: FC = () => {
         <div className={classes.profileSettings}>
           <div className={classes.settingsLeft}>
             <div className={classes.settingsImg}>
-              <a href="" target="_self">
-                <img src="#" alt="" />
-              </a>
+              {authUser.avatar && (
+                <img
+                  src={`${hostDomain}/${authUser.avatar}`}
+                  alt={`${authUser.name}`}
+                />
+              )}
             </div>
-            <a className={classes.settingsChangePhoto} href="#" target="_self">
-              Заменить
-            </a>
+            <div className={classes.settingsChangePhoto}>Заменить</div>
           </div>
           <div className={classes.settingsRight}>
-            <form className={classes.settingsForm} action="#">
+            <form
+              className={classes.settingsForm}
+              onSubmit={handleSubmit(onSubmit)}
+            >
               <div className={classes.settingsDiv}>
                 <label htmlFor="name">Имя</label>
                 <input
                   className={classes.settings__fname}
                   id="settings-fname"
-                  name="fname"
                   type="text"
-                  value="Ан"
                   placeholder=""
+                  {...register('name')}
                 />
               </div>
 
@@ -37,10 +74,9 @@ const ProfileForm: FC = () => {
                 <input
                   className={classes.settings__lname}
                   id="settings-lname"
-                  name="lname"
                   type="text"
-                  value="Городецкий"
                   placeholder=""
+                  {...register('surname')}
                 />
               </div>
 
@@ -49,10 +85,9 @@ const ProfileForm: FC = () => {
                 <input
                   className={classes.settings__city}
                   id="settings-city"
-                  name="city"
                   type="text"
-                  value="Санкт-Петербург"
                   placeholder=""
+                  {...register('city')}
                 />
               </div>
 
@@ -61,13 +96,11 @@ const ProfileForm: FC = () => {
                 <input
                   className={classes.settings__phone}
                   id="settings-phone"
-                  name="phone"
                   type="tel"
-                  value="89161234567"
-                  placeholder="+79161234567"
+                  placeholder=""
+                  {...register('phone')}
                 />
               </div>
-
               <ButtonMain
                 onClick={() => console.log('settings')}
                 text="Сохранить"

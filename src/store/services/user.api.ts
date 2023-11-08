@@ -31,7 +31,14 @@ export const userApi = api.injectEndpoints({
         }
       },
     }),
+    getUser: builder.query<IUser, unknown>({
+      query: () => `user`,
+    }),
   }),
 })
 
-export const { useRegisterUserMutation, useLoginUserMutation } = userApi
+export const {
+  useRegisterUserMutation,
+  useLoginUserMutation,
+  useGetUserQuery,
+} = userApi

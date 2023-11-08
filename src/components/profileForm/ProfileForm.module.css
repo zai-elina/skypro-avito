@@ -44,6 +44,7 @@
   font-size: 16px;
   line-height: 24px;
   color: #009ee4;
+  cursor: pointer;
 }
 .settingsRight {
   width: 630px;
