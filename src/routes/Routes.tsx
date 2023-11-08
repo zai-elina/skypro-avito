@@ -7,7 +7,7 @@ import RegisterPage from '../pages/registerPage/RegisterPage'
 import { ProtectedRoute } from './ProtectedRoute'
 import ArticlePage from '../pages/articlePage/ArticlePage'
 import SellerProfilePage from '../pages/sellerProfilePage/SellerProfilePage'
-import ProfilePage from '../pages/sellerProfilePage/SellerProfilePage'
+import ProfilePage from '../pages/profilePage/ProfilePage'
 
 const AppRoutes: FC = () => {
   return (

@@ -42,7 +42,8 @@ const LoginPage: FC = () => {
 
   useEffect(() => {
     if (data) {
-      localStorage.setItem('user', JSON.stringify(data))
+      localStorage.setItem('access_token', data.access_token)
+      localStorage.setItem('refresh_token', data.refresh_token)
       navigate('/')
     }
   })

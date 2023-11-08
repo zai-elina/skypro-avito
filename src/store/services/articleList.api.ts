@@ -16,7 +16,10 @@ export const articleList = api.injectEndpoints({
             ]
           : ['Article'],
     }),
+    getUserArticles: builder.query<IArticle[], unknown>({
+      query: () => ({ url: `ads/me` }),
+    }),
   }),
 })
 
-export const { useGetArticleDataQuery } = articleList
+export const { useGetArticleDataQuery, useGetUserArticlesQuery } = articleList

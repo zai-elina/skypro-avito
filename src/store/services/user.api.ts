@@ -1,4 +1,4 @@
-import { IFormFieldsRegister, IUser } from '../../types'
+import { IAuthResponse, IFormFieldsRegister, IUser } from '../../types'
 import { api } from './api'
 
 export const userApi = api.injectEndpoints({
@@ -19,7 +19,7 @@ export const userApi = api.injectEndpoints({
         }
       },
     }),
-    loginUser: builder.mutation<IUser, IFormFieldsRegister>({
+    loginUser: builder.mutation<IAuthResponse, IFormFieldsRegister>({
       query: (value) => {
         return {
           url: `auth/login`,
