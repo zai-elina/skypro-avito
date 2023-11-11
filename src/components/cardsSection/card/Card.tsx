@@ -17,10 +17,11 @@ const Card: FC<IPropsCard> = ({ article }) => {
       <div className={classes.card}>
         <div className={classes.cardImage}>
           <Link to={`/article/${id}`}>
-            {images.length !== 0 && (
+            {images.length !== 0 ? (
               <img src={`${hostDomain}/${images[0].url}`} alt={title} />
+            ) : (
+              <img src="../../img/box.jpg" alt={title} />
             )}
-            {title}
           </Link>
         </div>
         <div>

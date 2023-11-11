@@ -11,3 +11,6 @@ export const selectSellerOfSelectedArtile = (state: RootState) =>
 
 export const selectSearchArticleList = (state: RootState) =>
   state.articleList.searchResultArticleList
+
+export const selectAddModalOpen = (state: RootState) =>
+  state.articleList.addModalOpen

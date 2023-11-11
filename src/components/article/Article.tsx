@@ -24,8 +24,10 @@ const Article: FC = () => {
       <div className={classes.articleLeft}>
         <div className={classes.articleImgContainer}>
           <div className={classes.articleImg}>
-            {images && images.length !== 0 && (
-              <img src={`${hostDomain}/${images[0].url}`} alt="" />
+            {images && images.length !== 0 ? (
+              <img src={`${hostDomain}/${images[0].url}`} alt={title} />
+            ) : (
+              <img src="./img/box.jpg" alt={title} />
             )}
           </div>
           <div className={classes.articleImgBar}>

@@ -2,6 +2,8 @@ import React, { FC } from 'react'
 import classes from './Header.module.css'
 import ButtonHeader from '../buttons/buttonHeader/ButtonHeader'
 import { useNavigate } from 'react-router-dom'
+import { useAppDispatch } from '../../../store/reduxHook'
+import { openAddModal } from '../../../store/slices/articlesSlice'
 
 const Header: FC = () => {
   const isAuth = Boolean(localStorage.getItem('access_token'))
@@ -11,6 +13,7 @@ const Header: FC = () => {
     border: '1px solid #ffffff',
   }
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
 
   const openLoginForm = () => {
     navigate('/login')
@@ -18,6 +21,10 @@ const Header: FC = () => {
 
   const openProfile = () => {
     navigate('/profile')
+  }
+
+  const onClickOpenAddModal = () => {
+    dispatch(openAddModal(true))
   }
 
   return (
@@ -28,7 +35,7 @@ const Header: FC = () => {
             <ButtonHeader
               text="Разместить объявление"
               style={styleHeaderBtn}
-              onClick={() => console.log('add')}
+              onClick={onClickOpenAddModal}
             />
             <ButtonHeader
               text="Личный кабинет"

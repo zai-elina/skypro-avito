@@ -26,6 +26,12 @@ export interface IArticle {
   user: IUser
 }
 
+export interface IArticleForm {
+  title: string
+  description: string
+  price: number
+}
+
 export interface IFormFieldsRegister {
   password: string
   second_password: string

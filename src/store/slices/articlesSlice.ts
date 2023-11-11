@@ -6,6 +6,7 @@ interface IArticleStore {
   selectedArticle: IArticle
   sellerOfSelectedArticle: IUser
   searchResultArticleList: IArticle[]
+  addModalOpen: boolean
 }
 
 const initialState: IArticleStore = {
@@ -13,6 +14,7 @@ const initialState: IArticleStore = {
   selectedArticle: {} as IArticle,
   sellerOfSelectedArticle: {} as IUser,
   searchResultArticleList: [],
+  addModalOpen: false,
 }
 
 export const articlesSlice = createSlice({
@@ -31,6 +33,9 @@ export const articlesSlice = createSlice({
     changeSellerOfSelectedArticle: (state, action) => {
       state.sellerOfSelectedArticle = action.payload
     },
+    openAddModal: (state, action) => {
+      state.addModalOpen = action.payload
+    },
   },
 })
 
@@ -39,6 +44,7 @@ export const {
   changeSelectedArticle,
   changeSearchResultArticleList,
   changeSellerOfSelectedArticle,
+  openAddModal,
 } = articlesSlice.actions
 
 export default articlesSlice.reducer
