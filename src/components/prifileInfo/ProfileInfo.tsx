@@ -33,22 +33,23 @@ const ProfileInfo: FC = () => {
                 <img src={`${hostDomain}/${avatar}`} alt={name} />
               </div>
             </div>
-
-            <ButtonMain
-              text={`Показать телефон\n${
-                phoneIsOpen ? phone : maskString(phone)
-              }`}
-              onClick={() => {
-                setPhoneIsOpen(!phoneIsOpen)
-              }}
-              style={{
-                whiteSpace: 'pre-line',
-                width: '214px',
-                height: '62px',
-                marginLeft: '0',
-                marginTop: '10px',
-              }}
-            />
+            {phone && (
+              <ButtonMain
+                text={`Показать телефон\n${
+                  phoneIsOpen ? phone : maskString(phone)
+                }`}
+                onClick={() => {
+                  setPhoneIsOpen(!phoneIsOpen)
+                }}
+                style={{
+                  whiteSpace: 'pre-line',
+                  width: '214px',
+                  height: '62px',
+                  marginLeft: '0',
+                  marginTop: '10px',
+                }}
+              />
+            )}
           </div>
         </div>
       </div>

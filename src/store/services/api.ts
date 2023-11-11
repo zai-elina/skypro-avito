@@ -64,10 +64,7 @@ const baseQueryWithReauth = async (
     extraOptions,
   )
 
-  if (
-    refreshResult?.error?.status === 401 ||
-    refreshResult?.error?.status === 422
-  ) {
+  if (refreshResult?.error?.status === 422) {
     return forceLogout()
   }
 

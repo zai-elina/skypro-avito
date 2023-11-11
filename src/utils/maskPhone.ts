@@ -1,5 +1,5 @@
 export function maskString(str: string) {
-  if (str.length <= 3) {
+  if (str?.length <= 3) {
     return str
   }
 

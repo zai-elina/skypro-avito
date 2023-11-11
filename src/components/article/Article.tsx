@@ -27,7 +27,7 @@ const Article: FC = () => {
             {images && images.length !== 0 ? (
               <img src={`${hostDomain}/${images[0].url}`} alt={title} />
             ) : (
-              <img src="./img/box.jpg" alt={title} />
+              <img src="../../img/box.jpg" alt={title} />
             )}
           </div>
           <div className={classes.articleImgBar}>
@@ -58,22 +58,25 @@ const Article: FC = () => {
             <Link to="/">23 отзыва</Link>
           </div>
           <p className={classes.articlePrice}>{price}</p>
-          <ButtonMain
-            text={`Показать телефон\n${
-              phoneIsOpen
-                ? user?.phone
-                : maskString(user?.phone ? user.phone : '')
-            }`}
-            onClick={() => {
-              setPhoneIsOpen(!phoneIsOpen)
-            }}
-            style={{
-              whiteSpace: 'pre-line',
-              width: '214px',
-              height: '62px',
-              marginLeft: '0',
-            }}
-          />
+          {user?.phone && (
+            <ButtonMain
+              text={`Показать телефон\n${
+                phoneIsOpen
+                  ? user?.phone
+                  : maskString(user?.phone ? user.phone : '')
+              }`}
+              onClick={() => {
+                setPhoneIsOpen(!phoneIsOpen)
+              }}
+              style={{
+                whiteSpace: 'pre-line',
+                width: '214px',
+                height: '62px',
+                marginLeft: '0',
+              }}
+            />
+          )}
+
           <Link to={`/user/${user?.id}`}>
             <div className={classes.articleAuthor}>
               <div className={classes.articleAuthorImg}>

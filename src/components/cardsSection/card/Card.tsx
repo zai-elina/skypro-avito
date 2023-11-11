@@ -20,7 +20,7 @@ const Card: FC<IPropsCard> = ({ article }) => {
             {images.length !== 0 ? (
               <img src={`${hostDomain}/${images[0].url}`} alt={title} />
             ) : (
-              <img src="../../img/box.jpg" alt={title} />
+              <img src="./img/box.jpg" alt={title} />
             )}
           </Link>
         </div>

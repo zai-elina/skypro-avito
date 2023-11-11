@@ -10,6 +10,9 @@
   align-items: center;
   justify-content: end;
 }
+.logOut {
+  cursor: pointer;
+}
 @media screen and (max-width: 620px) {
   .header {
     display: none;
