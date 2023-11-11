@@ -29,13 +29,14 @@
   height: 170px;
   border-radius: 50%;
   background-color: #f0f0f0;
+  overflow: hidden;
 }
+
 .settingsImg img {
   width: 100%;
-  height: auto;
-  display: block;
-  -o-object-fit: cover;
+  height: 100%;
   object-fit: cover;
+  display: block;
 }
 .settingsChangePhoto {
   margin-top: 10px;

@@ -4,7 +4,7 @@ import classes from './ButtonMain.module.css'
 interface IButtonProps {
   text: string
   style?: React.CSSProperties
-  onClick: () => void
+  onClick?: () => void
 }
 
 const ButtonMain: FC<IButtonProps> = ({ text, style, onClick }) => {

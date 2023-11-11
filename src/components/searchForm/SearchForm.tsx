@@ -13,7 +13,6 @@ const SearchForm: FC = () => {
   const [search, setSearch] = useState('')
   const articleList = useAppSelector(selectArtticleList)
   const dispatch = useAppDispatch()
-  console.log(search)
 
   const searchData = () => {
     if (articleList) {

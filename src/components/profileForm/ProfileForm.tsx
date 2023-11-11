@@ -5,6 +5,11 @@ import { useAppSelector } from '../../store/reduxHook'
 import { selectUser } from '../../store/selectors/userSelector'
 import { useForm } from 'react-hook-form'
 import { hostDomain } from '../../constants'
+import {
+  useChangeAvatarMutation,
+  useChangeUserDataMutation,
+} from '../../store/services/user.api'
+import { IUser } from '../../types'
 
 interface IProfileFormData {
   name: string
@@ -24,6 +29,8 @@ const ProfileForm: FC = () => {
     },
   })
   const [image, setImage] = useState<null | File>(null)
+  const [changeAvatar] = useChangeAvatarMutation()
+  const [changeUserData] = useChangeUserDataMutation()
 
   useEffect(() => {
     reset({
@@ -34,8 +41,10 @@ const ProfileForm: FC = () => {
     })
   }, [authUser, reset])
 
-  const onSubmit = (data: any) => {
-    console.log(data)
+  const onSubmit = async (
+    data: Pick<IUser, 'name' | 'phone' | 'surname' | 'city'>,
+  ) => {
+    await changeUserData(data)
   }
 
   const uploadContent = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,12 +56,12 @@ const ProfileForm: FC = () => {
     }
   }
 
-  const sendContent = (event: React.FormEvent) => {
+  const sendContent = async (event: React.FormEvent) => {
     event.preventDefault()
     const formData = new FormData()
     if (image) {
       formData.append('file', image)
-      //api Запрос
+      await changeAvatar(formData)
     }
   }
 
@@ -126,15 +135,12 @@ const ProfileForm: FC = () => {
                 <input
                   className={classes.settings__phone}
                   id="settings-phone"
-                  type="tel"
+                  type="number"
                   placeholder=""
                   {...register('phone')}
                 />
               </div>
-              <ButtonMain
-                onClick={() => console.log('settings')}
-                text="Сохранить"
-              />
+              <ButtonMain text="Сохранить" />
             </form>
           </div>
         </div>

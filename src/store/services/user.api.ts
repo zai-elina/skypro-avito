@@ -33,6 +33,40 @@ export const userApi = api.injectEndpoints({
     }),
     getUser: builder.query<IUser, unknown>({
       query: () => `user`,
+      providesTags: (result) =>
+        Array.isArray(result)
+          ? [
+              ...result.map(({ id }) => ({
+                type: 'Profile' as const,
+                id,
+              })),
+              'Profile',
+            ]
+          : ['Profile'],
+    }),
+    changeAvatar: builder.mutation<IUser, FormData>({
+      query: (value) => ({
+        url: `user/avatar`,
+        method: 'POST',
+        body: value,
+      }),
+      invalidatesTags: ['Profile'],
+    }),
+    changeUserData: builder.mutation<
+      IUser,
+      Pick<IUser, 'name' | 'phone' | 'surname' | 'city'>
+    >({
+      query: (value) => ({
+        url: `user`,
+        method: 'PATCH',
+        body: {
+          phone: value.phone,
+          name: value.name,
+          surname: value.surname,
+          city: value.city,
+        },
+      }),
+      invalidatesTags: ['Profile'],
     }),
   }),
 })
@@ -41,4 +75,6 @@ export const {
   useRegisterUserMutation,
   useLoginUserMutation,
   useGetUserQuery,
+  useChangeAvatarMutation,
+  useChangeUserDataMutation,
 } = userApi
