@@ -19,6 +19,7 @@ const ProfilePage: FC = () => {
   useEffect(() => {
     if (!isUserLoading && !isError) {
       dispatch(setUser(user))
+      localStorage.setItem('authUser', JSON.stringify(user))
     }
   }, [dispatch, isError, isUserLoading, user])
 

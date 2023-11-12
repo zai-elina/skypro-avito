@@ -41,6 +41,29 @@ export const articleList = api.injectEndpoints({
       }),
       invalidatesTags: ['ArticleList'],
     }),
+    editArticle: builder.mutation<IArticle[], IArticleForm>({
+      query: (value) => ({
+        url: `ads/${value.id}`,
+        method: 'PATCH',
+        body: {
+          title: value.title,
+          description: value.description,
+          price: value.price,
+        },
+      }),
+      invalidatesTags: ['Article'],
+    }),
+    editArticleImg: builder.mutation<
+      IArticle[],
+      { id: number; file: FormData }
+    >({
+      query: (value) => ({
+        url: `ads/${value.id}/image`,
+        method: 'POST',
+        body: value.file,
+      }),
+      invalidatesTags: ['Article'],
+    }),
   }),
 })
 
@@ -50,4 +73,6 @@ export const {
   useCreateArticleMutation,
   useDeleteArticleMutation,
   useGetArticleDataCommentsQuery,
+  useEditArticleMutation,
+  useEditArticleImgMutation,
 } = articleList

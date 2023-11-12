@@ -9,6 +9,7 @@ interface IArticleStore {
   searchResultArticleList: IArticle[]
   addModalOpen: boolean
   deleteModalOpen: boolean
+  editModalOpen: boolean
 }
 
 const initialState: IArticleStore = {
@@ -19,6 +20,7 @@ const initialState: IArticleStore = {
   searchResultArticleList: [],
   addModalOpen: false,
   deleteModalOpen: false,
+  editModalOpen: false,
 }
 
 export const articlesSlice = createSlice({
@@ -46,6 +48,9 @@ export const articlesSlice = createSlice({
     openDeleteModal: (state, action) => {
       state.deleteModalOpen = action.payload
     },
+    editArticleModal: (state, action) => {
+      state.editModalOpen = action.payload
+    },
   },
 })
 
@@ -57,6 +62,7 @@ export const {
   openAddModal,
   openDeleteModal,
   changeSelectedArticleComments,
+  editArticleModal,
 } = articlesSlice.actions
 
 export default articlesSlice.reducer

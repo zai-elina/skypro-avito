@@ -27,6 +27,7 @@ export interface IArticle {
 }
 
 export interface IArticleForm {
+  id?: number
   title: string
   description: string
   price: number
@@ -51,7 +52,7 @@ export interface IAuthResponse {
   token_type: string
 }
 
- export interface IComment {
+export interface IComment {
   id: number
   text: string
   created_on: string

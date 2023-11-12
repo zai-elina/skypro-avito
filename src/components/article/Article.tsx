@@ -6,18 +6,21 @@ import { useAppDispatch, useAppSelector } from '../../store/reduxHook'
 import {
   selectAtricleComments,
   selectDeleteModalOpen,
+  selectEditModalOpen,
   selectSelectedArtile,
 } from '../../store/selectors/articleSelectors'
 import dayjs from 'dayjs'
 import { hostDomain } from '../../constants'
 import {
   changeSellerOfSelectedArticle,
+  editArticleModal,
   openDeleteModal,
 } from '../../store/slices/articlesSlice'
 import { maskString } from '../../utils/maskPhone'
 import { selectUser } from '../../store/selectors/userSelector'
 import Modal from '../layout/modal/Modal'
 import { useDeleteArticleMutation } from '../../store/services/articleList.api'
+import ArticleEditForm from './ArticleEditForm/ArticleEditForm'
 
 interface IConstructorButtonArticle {
   authUserArticle: ReactNode
@@ -37,6 +40,7 @@ const Article: FC = () => {
   const [deleteAtricle, { isError: deleteError }] = useDeleteArticleMutation()
   const navigate = useNavigate()
   const comments = useAppSelector(selectAtricleComments)
+  const activeEditModal = useAppSelector(selectEditModalOpen)
 
   useEffect(() => {
     window.scrollTo({
@@ -60,12 +64,16 @@ const Article: FC = () => {
     navigate('/')
   }
 
+  const onClickEditButton = async () => {
+    dispatch(editArticleModal(true))
+  }
+
   const ConstructorButtonArticle: IConstructorButtonArticle = {
     authUserArticle: (
       <div className={classes.buttonContainer}>
         <ButtonMain
           text="Редактировать"
-          onClick={onClickDeleteButton}
+          onClick={onClickEditButton}
           style={{
             whiteSpace: 'pre-line',
             width: '214px',
@@ -187,6 +195,12 @@ const Article: FC = () => {
         >
           <ButtonMain text="Скрыть" onClick={onClickDeleteArticle} />
         </div>
+      </Modal>
+      <Modal
+        active={activeEditModal}
+        closeModal={() => dispatch(editArticleModal(false))}
+      >
+        <ArticleEditForm />
       </Modal>
     </>
   )

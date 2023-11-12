@@ -1,5 +1,5 @@
 import React from 'react'
-import { useForm } from 'react-hook-form'
+import { FieldValues, useForm } from 'react-hook-form'
 import classes from './ArticleAddForm.module.css'
 import ButtonMain from '../../layout/buttons/buttonMain/ButtonMain'
 import { useAppDispatch } from '../../../store/reduxHook'
@@ -11,8 +11,13 @@ const ArticleAddForm = () => {
   const dispatch = useAppDispatch()
   const [createArticle] = useCreateArticleMutation()
 
-  const onSubmit = async (data: any) => {
-    await createArticle(data)
+  const onSubmit = async (data: FieldValues) => {
+    const { title, description, price } = data
+    await createArticle({
+      title: title,
+      description: description,
+      price: price,
+    })
     dispatch(openAddModal(false))
   }
 
@@ -42,6 +47,7 @@ const ArticleAddForm = () => {
         <div className={classes.modal__form_newArt__block}>
           <label htmlFor="text">Описание</label>
           <textarea
+            rows={20}
             className={classes.modal__form_newArt__area}
             placeholder="Введите описание"
             {...register('description')}
