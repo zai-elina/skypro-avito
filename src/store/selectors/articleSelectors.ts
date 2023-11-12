@@ -14,3 +14,6 @@ export const selectSearchArticleList = (state: RootState) =>
 
 export const selectAddModalOpen = (state: RootState) =>
   state.articleList.addModalOpen
+
+export const selectDeleteModalOpen = (state: RootState) =>
+  state.articleList.deleteModalOpen

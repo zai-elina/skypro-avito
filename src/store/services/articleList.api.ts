@@ -31,6 +31,13 @@ export const articleList = api.injectEndpoints({
       }),
       invalidatesTags: ['Profile'],
     }),
+    deleteArticle: builder.mutation<IArticle[], number>({
+      query: (id) => ({
+        url: `ads/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Profile'],
+    }),
   }),
 })
 
@@ -38,4 +45,5 @@ export const {
   useGetArticleDataQuery,
   useGetUserArticlesQuery,
   useCreateArticleMutation,
+  useDeleteArticleMutation,
 } = articleList

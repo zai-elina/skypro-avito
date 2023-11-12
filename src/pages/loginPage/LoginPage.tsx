@@ -45,7 +45,6 @@ const LoginPage: FC = () => {
       localStorage.setItem('access_token', data.access_token)
       localStorage.setItem('refresh_token', data.refresh_token)
       navigate('/')
-      
     }
   }, [data, navigate])
 
@@ -69,9 +68,8 @@ const LoginPage: FC = () => {
               const { type, name, placeholder, rules } = input
               const id = nanoid()
               return (
-                <>
+                <div key={id}>
                   <Input
-                    key={id}
                     type={type}
                     name={name}
                     placeholder={placeholder}
@@ -83,7 +81,7 @@ const LoginPage: FC = () => {
                       {errors[name as keyof IFormFieldsRegister]?.message}
                     </p>
                   )}
-                </>
+                </div>
               )
             })}
             <button className={classes.modalBtnEnter} type="submit">
