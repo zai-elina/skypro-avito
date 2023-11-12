@@ -144,6 +144,11 @@
 .modal__btn_close_line::after {
   transform: rotate(-45deg);
 }
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 @media screen and (max-width: 890px) {
   .articleLeft {
     margin-right: 20px;

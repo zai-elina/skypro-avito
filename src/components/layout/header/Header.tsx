@@ -29,7 +29,7 @@ const Header: FC = () => {
 
   const logOut = () => {
     localStorage.clear()
-    navigate('/login')
+    navigate('/')
   }
 
   return (

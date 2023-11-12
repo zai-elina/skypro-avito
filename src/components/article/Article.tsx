@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import classes from './Article.module.css'
 import { useAppDispatch, useAppSelector } from '../../store/reduxHook'
 import {
+  selectAtricleComments,
   selectDeleteModalOpen,
   selectSelectedArtile,
 } from '../../store/selectors/articleSelectors'
@@ -35,6 +36,7 @@ const Article: FC = () => {
   const activeDeleteModal = useAppSelector(selectDeleteModalOpen)
   const [deleteAtricle, { isError: deleteError }] = useDeleteArticleMutation()
   const navigate = useNavigate()
+  const comments = useAppSelector(selectAtricleComments)
 
   useEffect(() => {
     window.scrollTo({
@@ -60,7 +62,17 @@ const Article: FC = () => {
 
   const ConstructorButtonArticle: IConstructorButtonArticle = {
     authUserArticle: (
-      <>
+      <div className={classes.buttonContainer}>
+        <ButtonMain
+          text="Редактировать"
+          onClick={onClickDeleteButton}
+          style={{
+            whiteSpace: 'pre-line',
+            width: '214px',
+            height: '62px',
+            marginLeft: '0',
+          }}
+        />{' '}
         <ButtonMain
           text="Снять с публикации"
           onClick={onClickDeleteButton}
@@ -71,7 +83,7 @@ const Article: FC = () => {
             marginLeft: '0',
           }}
         />
-      </>
+      </div>
     ),
     userArticle: (
       <>
@@ -134,7 +146,7 @@ const Article: FC = () => {
                 {dayjs(created_on).format('D MMMM, YYYY HH:mm')}
               </p>
               <p className={classes.articleTextInfo}>{user?.city}</p>
-              <Link to="/">23 отзыва</Link>
+              <Link to="/">{comments.length} отзывов</Link>
             </div>
             <p className={classes.articlePrice}>{price} ₽</p>
             {ConstructorButtonArticle[buttonType]}

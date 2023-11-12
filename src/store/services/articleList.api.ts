@@ -16,6 +16,9 @@ export const articleList = api.injectEndpoints({
             ]
           : ['Article'],
     }),
+    getArticleDataComments: builder.query<IArticle, number>({
+      query: (id) => `ads/${id}/comments`,
+    }),
     getUserArticles: builder.query<IArticle[], unknown>({
       query: () => ({ url: `ads/me` }),
     }),
@@ -36,7 +39,7 @@ export const articleList = api.injectEndpoints({
         url: `ads/${id}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Profile'],
+      invalidatesTags: ['ArticleList'],
     }),
   }),
 })
@@ -46,4 +49,5 @@ export const {
   useGetUserArticlesQuery,
   useCreateArticleMutation,
   useDeleteArticleMutation,
+  useGetArticleDataCommentsQuery,
 } = articleList

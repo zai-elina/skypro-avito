@@ -6,6 +6,9 @@ export const selectArtticleList = (state: RootState) =>
 export const selectSelectedArtile = (state: RootState) =>
   state.articleList.selectedArticle
 
+export const selectAtricleComments = (state: RootState) =>
+  state.articleList.selectedArticleComments
+
 export const selectSellerOfSelectedArtile = (state: RootState) =>
   state.articleList.sellerOfSelectedArticle
 
