@@ -177,7 +177,8 @@ const Article: FC = () => {
                 <div style={{ marginLeft: '12px' }}>
                   <p className={classes.authorName}>{user?.name}</p>
                   <p className={classes.articleTextInfo}>
-                    Продает товары {user?.sells_from}
+                    Продает товары с{' '}
+                    {dayjs(user?.sells_from).format('D MMMM, YYYY')}
                   </p>
                 </div>
               </div>
