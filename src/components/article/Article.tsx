@@ -7,6 +7,7 @@ import {
   selectAtricleComments,
   selectDeleteModalOpen,
   selectEditModalOpen,
+  selectReviewsModalOpen,
   selectSelectedArtile,
 } from '../../store/selectors/articleSelectors'
 import dayjs from 'dayjs'
@@ -15,12 +16,15 @@ import {
   changeSellerOfSelectedArticle,
   editArticleModal,
   openDeleteModal,
+  openReviewsModal,
 } from '../../store/slices/articlesSlice'
 import { maskString } from '../../utils/maskPhone'
 import { selectUser } from '../../store/selectors/userSelector'
 import Modal from '../layout/modal/Modal'
 import { useDeleteArticleMutation } from '../../store/services/articleList.api'
 import ArticleEditForm from './ArticleEditForm/ArticleEditForm'
+import Reviews from '../reviews/Reviews'
+import CloseButton from '../closeButton/CloseButton'
 
 interface IConstructorButtonArticle {
   authUserArticle: ReactNode
@@ -41,6 +45,7 @@ const Article: FC = () => {
   const navigate = useNavigate()
   const comments = useAppSelector(selectAtricleComments)
   const activeEditModal = useAppSelector(selectEditModalOpen)
+  const reviewsModal = useAppSelector(selectReviewsModalOpen)
 
   useEffect(() => {
     window.scrollTo({
@@ -154,7 +159,12 @@ const Article: FC = () => {
                 {dayjs(created_on).format('D MMMM, YYYY HH:mm')}
               </p>
               <p className={classes.articleTextInfo}>{user?.city}</p>
-              <Link to="/">{comments.length} отзывов</Link>
+              <button
+                className={classes.buttonLink}
+                onClick={() => dispatch(openReviewsModal(true))}
+              >
+                {comments.length} отзывов
+              </button>
             </div>
             <p className={classes.articlePrice}>{price} ₽</p>
             {ConstructorButtonArticle[buttonType]}
@@ -179,12 +189,7 @@ const Article: FC = () => {
         active={activeDeleteModal}
         closeModal={() => dispatch(openDeleteModal(false))}
       >
-        <div
-          className={classes.modal__btn_close}
-          onClick={() => dispatch(openDeleteModal(false))}
-        >
-          <div className={classes.modal__btn_close_line}></div>
-        </div>
+        <CloseButton onClick={() => dispatch(openDeleteModal(false))} />
         <div style={{ marginTop: '30px' }}>Хотите скрыть объявление?</div>
         <div
           style={{
@@ -201,6 +206,12 @@ const Article: FC = () => {
         closeModal={() => dispatch(editArticleModal(false))}
       >
         <ArticleEditForm />
+      </Modal>
+      <Modal
+        active={reviewsModal}
+        closeModal={() => dispatch(openReviewsModal(false))}
+      >
+        <Reviews />
       </Modal>
     </>
   )

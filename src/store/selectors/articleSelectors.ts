@@ -23,3 +23,6 @@ export const selectDeleteModalOpen = (state: RootState) =>
 
 export const selectEditModalOpen = (state: RootState) =>
   state.articleList.editModalOpen
+
+export const selectReviewsModalOpen = (state: RootState) =>
+  state.articleList.reviewsModalOpen

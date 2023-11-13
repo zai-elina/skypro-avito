@@ -10,6 +10,7 @@ interface IArticleStore {
   addModalOpen: boolean
   deleteModalOpen: boolean
   editModalOpen: boolean
+  reviewsModalOpen: boolean
 }
 
 const initialState: IArticleStore = {
@@ -21,6 +22,7 @@ const initialState: IArticleStore = {
   addModalOpen: false,
   deleteModalOpen: false,
   editModalOpen: false,
+  reviewsModalOpen: false,
 }
 
 export const articlesSlice = createSlice({
@@ -51,6 +53,9 @@ export const articlesSlice = createSlice({
     editArticleModal: (state, action) => {
       state.editModalOpen = action.payload
     },
+    openReviewsModal: (state, action) => {
+      state.reviewsModalOpen = action.payload
+    },
   },
 })
 
@@ -63,6 +68,7 @@ export const {
   openDeleteModal,
   changeSelectedArticleComments,
   editArticleModal,
+  openReviewsModal,
 } = articlesSlice.actions
 
 export default articlesSlice.reducer

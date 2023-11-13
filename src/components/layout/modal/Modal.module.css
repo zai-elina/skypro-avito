@@ -21,6 +21,7 @@
   border-radius: 12px;
   background-color: #fff;
   width: 50vw;
+  height: 80vh;
   transform: scale(0.5);
   transition: 0.5s;
 }

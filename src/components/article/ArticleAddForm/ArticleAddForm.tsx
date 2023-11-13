@@ -5,6 +5,7 @@ import ButtonMain from '../../layout/buttons/buttonMain/ButtonMain'
 import { useAppDispatch } from '../../../store/reduxHook'
 import { openAddModal } from '../../../store/slices/articlesSlice'
 import { useCreateArticleMutation } from '../../../store/services/articleList.api'
+import CloseButton from '../../closeButton/CloseButton'
 
 const ArticleAddForm = () => {
   const { register, handleSubmit } = useForm()
@@ -24,12 +25,7 @@ const ArticleAddForm = () => {
   return (
     <>
       <h3 className={classes.modal__title}>Новое объявление</h3>
-      <div
-        className={classes.modal__btn_close}
-        onClick={() => dispatch(openAddModal(false))}
-      >
-        <div className={classes.modal__btn_close_line}></div>
-      </div>
+      <CloseButton onClick={() => dispatch(openAddModal(false))} />
       <form
         className={classes.modal__form_newArt}
         name="formNewArt"

@@ -9,6 +9,7 @@ import {
   useEditArticleImgMutation,
   useEditArticleMutation,
 } from '../../../store/services/articleList.api'
+import CloseButton from '../../closeButton/CloseButton'
 
 const ArticleEditForm = () => {
   const article = useAppSelector(selectSelectedArtile)
@@ -61,9 +62,7 @@ const ArticleEditForm = () => {
   return (
     <>
       <h3 className={classes.modal__title}>Редактировать объявление</h3>
-      <div className={classes.modal__btn_close} onClick={onClose}>
-        <div className={classes.modal__btn_close_line}></div>
-      </div>
+      <CloseButton onClick={onClose}/>
       <form
         className={classes.modal__form_newArt}
         name="formEditArt"

@@ -114,41 +114,18 @@
   color: #009ee4;
 }
 
-.modal__btn_close {
-  width: 23px;
-  height: 23px;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 3;
-  cursor: pointer;
-}
-.modal__btn_close_line {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-.modal__btn_close_line::after,
-.modal__btn_close_line::before {
-  content: '';
-  position: absolute;
-  width: 30px;
-  height: 2px;
-  border-radius: 2px;
-  background-color: #d9d9d9;
-  top: 47%;
-  right: -4px;
-}
-.modal__btn_close_line::before {
-  transform: rotate(45deg);
-}
-.modal__btn_close_line::after {
-  transform: rotate(-45deg);
-}
 .buttonContainer {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+}
+.buttonLink {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 21px;
+  color: #009ee4;
 }
 @media screen and (max-width: 890px) {
   .articleLeft {

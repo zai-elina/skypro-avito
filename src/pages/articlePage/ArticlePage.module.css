@@ -12,7 +12,7 @@
 }
 @media screen and (max-width: 890px) {
   .mainContainer {
-    padding: 85px 0px 84px;
+    padding: 20px 0px 84px;
   }
   .mainCenterBlock {
     margin: 0 auto;
@@ -22,7 +22,7 @@
 
 @media screen and (max-width: 620px) {
   .mainContainer {
-    padding: 85px 0px 84px;
+    padding: 20px 0px 84px;
   }
   .mainCenterBlock {
     margin: 0 auto;
