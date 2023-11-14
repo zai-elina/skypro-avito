@@ -5,27 +5,36 @@ import { openReviewsModal } from '../../store/slices/articlesSlice'
 import classes from './Reviews.module.css'
 import { selectAtricleComments } from '../../store/selectors/articleSelectors'
 import dayjs from 'dayjs'
+import { hostDomain } from '../../constants'
+import ButtonMain from '../layout/buttons/buttonMain/ButtonMain'
+import { useForm } from 'react-hook-form'
 
 const Reviews: FC = () => {
   const dispatch = useAppDispatch()
   const comments = useAppSelector(selectAtricleComments)
+  const { register, handleSubmit } = useForm()
+
+  const onSubmit = () => {}
+
   return (
     <div>
       <h3 className={classes.modal__title}>Отзывы о товаре</h3>
       <CloseButton onClick={() => dispatch(openReviewsModal(false))} />
-      <form className="modal__form-newArt form-newArt" id="formNewArt">
-        <div className="form-newArt__block">
+      <form
+        className={classes.commentForm}
+        name="commentAdd"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <div className={classes.commentBlock}>
           <label htmlFor="text">Добавить отзыв</label>
           <textarea
-            className="form-newArt__area"
-            name="text"
+            className={classes.commentTextarea}
             id="formArea"
             placeholder="Введите описание"
+            {...register('text')}
           ></textarea>
         </div>
-        <button className="form-newArt__btn-pub btn-hov02" id="btnPublish">
-          Опубликовать
-        </button>
+        <ButtonMain type="submit" text="Опубликовать" onClick={() => {}} />
       </form>
       <div className={classes.modal__scroll}>
         <div className="modal__reviews reviews">
@@ -34,7 +43,7 @@ const Reviews: FC = () => {
               <div className="review__item">
                 <div className="review__left">
                   <div className="review__img">
-                    <img src="" alt="" />
+                    <img src={`${hostDomain}/${item.author.avatar}`} alt="" />
                   </div>
                 </div>
                 <div className="review__right">

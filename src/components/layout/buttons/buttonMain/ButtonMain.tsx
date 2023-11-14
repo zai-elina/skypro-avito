@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import classes from './ButtonMain.module.css'
 
 interface IButtonProps {
+  type?: string
   text: string
   style?: React.CSSProperties
   onClick?: () => void
