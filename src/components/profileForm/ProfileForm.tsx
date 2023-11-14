@@ -31,6 +31,7 @@ const ProfileForm: FC = () => {
   const [changeAvatar] = useChangeAvatarMutation()
   const [changeUserData] = useChangeUserDataMutation()
   const [selectedImage, setSelectedImage] = useState<File | null>(null)
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true)
 
   useEffect(() => {
     reset({
@@ -103,6 +104,7 @@ const ProfileForm: FC = () => {
             <form
               className={classes.settingsForm}
               onSubmit={handleSubmit(onSubmit)}
+              onFocus={() => setIsButtonDisabled(false)}
             >
               <div className={classes.settingsDiv}>
                 <label htmlFor="name">Имя</label>
@@ -147,7 +149,7 @@ const ProfileForm: FC = () => {
                   {...register('phone')}
                 />
               </div>
-              <ButtonMain text="Сохранить" />
+              <ButtonMain text="Сохранить" disabled={isButtonDisabled} />
             </form>
           </div>
         </div>
