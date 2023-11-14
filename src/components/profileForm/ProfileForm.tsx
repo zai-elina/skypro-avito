@@ -52,7 +52,6 @@ const ProfileForm: FC = () => {
     const files = event.target.files
     if (files && files.length > 0) {
       setImage(files[0])
-      console.log(files[0])
     }
   }
 

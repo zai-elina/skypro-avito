@@ -25,7 +25,6 @@ const Reviews: FC = () => {
   const onSubmit = async (data: FieldValues) => {
     await addReview({ id: article.id, text: data.text })
   }
-  console.log(Object.keys(authUser).length === 0)
 
   return (
     <div>

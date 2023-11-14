@@ -25,6 +25,7 @@ import { useDeleteArticleMutation } from '../../store/services/articleList.api'
 import ArticleEditForm from './ArticleEditForm/ArticleEditForm'
 import Reviews from '../reviews/Reviews'
 import CloseButton from '../closeButton/CloseButton'
+import ArticleImg from './ArticleImg/ArticleImg'
 
 interface IConstructorButtonArticle {
   authUserArticle: ReactNode
@@ -126,30 +127,7 @@ const Article: FC = () => {
     <>
       <div className={classes.article}>
         <div className={classes.articleLeft}>
-          <div className={classes.articleImgContainer}>
-            <div className={classes.articleImg}>
-              {images && images.length !== 0 ? (
-                <img src={`${hostDomain}/${images[0].url}`} alt={title} />
-              ) : (
-                <img src="../../img/box.jpg" alt={title} />
-              )}
-            </div>
-            <div className={classes.articleImgBar}>
-              {images?.map((img) => (
-                <div className={classes.articleImgBarItem} key={img.id}>
-                  <img src={`${hostDomain}/${img.url}`} alt="" />
-                </div>
-              ))}
-            </div>
-            <div className={classes.articleImgBarMob}>
-              {/* !!!подключить слайдер */}
-              <div className="img-bar-mob__circle circle-active"></div>
-              <div className="img-bar-mob__circle"></div>
-              <div className="img-bar-mob__circle"></div>
-              <div className="img-bar-mob__circle"></div>
-              <div className="img-bar-mob__circle"></div>
-            </div>
-          </div>
+          <ArticleImg title={title} images={images} />
         </div>
         <div className={classes.articleRight}>
           <div className={classes.articleВlock}>

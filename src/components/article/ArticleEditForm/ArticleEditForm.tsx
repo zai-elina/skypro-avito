@@ -46,11 +46,10 @@ const ArticleEditForm = () => {
       })
 
       if (selectedImage) {
-        const uploadResponse = await editArticleImg({
+         await editArticleImg({
           id: article.id,
           file: formData,
         })
-        console.log(uploadResponse)
       }
 
       onClose()
