@@ -1,11 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { IArticle, IComment, IUser } from '../../types'
+import { IArticle, IComment } from '../../types'
 
 interface IArticleStore {
   articleList: IArticle[]
   selectedArticle: IArticle
   selectedArticleComments: IComment[]
-  sellerOfSelectedArticle: IUser
   searchResultArticleList: IArticle[]
   addModalOpen: boolean
   deleteModalOpen: boolean
@@ -17,7 +16,6 @@ const initialState: IArticleStore = {
   articleList: [],
   selectedArticle: {} as IArticle,
   selectedArticleComments: [],
-  sellerOfSelectedArticle: {} as IUser,
   searchResultArticleList: [],
   addModalOpen: false,
   deleteModalOpen: false,
@@ -41,9 +39,6 @@ export const articlesSlice = createSlice({
     changeSearchResultArticleList: (state, action) => {
       state.searchResultArticleList = action.payload
     },
-    changeSellerOfSelectedArticle: (state, action) => {
-      state.sellerOfSelectedArticle = action.payload
-    },
     openAddModal: (state, action) => {
       state.addModalOpen = action.payload
     },
@@ -63,7 +58,6 @@ export const {
   setArticleList,
   changeSelectedArticle,
   changeSearchResultArticleList,
-  changeSellerOfSelectedArticle,
   openAddModal,
   openDeleteModal,
   changeSelectedArticleComments,

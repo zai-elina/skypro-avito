@@ -19,6 +19,12 @@ const SellerProfilePage: FC = () => {
     }
   }, [articles, id])
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    })
+  }, [])
+
   return (
     <main>
       <div className={classes.mainContainer}>

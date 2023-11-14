@@ -28,9 +28,9 @@ const ProfileForm: FC = () => {
       phone: authUser.phone ? authUser.phone : '',
     },
   })
-  const [image, setImage] = useState<null | File>(null)
   const [changeAvatar] = useChangeAvatarMutation()
   const [changeUserData] = useChangeUserDataMutation()
+  const [selectedImage, setSelectedImage] = useState<File | null>(null)
 
   useEffect(() => {
     reset({
@@ -47,19 +47,10 @@ const ProfileForm: FC = () => {
     await changeUserData(data)
   }
 
-  const uploadContent = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault()
-    const files = event.target.files
-    if (files && files.length > 0) {
-      setImage(files[0])
-    }
-  }
-
-  const sendContent = async (event: React.FormEvent) => {
-    event.preventDefault()
+  const sendContent = async (file: File) => {
     const formData = new FormData()
-    if (image) {
-      formData.append('file', image)
+    if (file) {
+      formData.append('file', file)
       await changeAvatar(formData)
     }
   }
@@ -73,23 +64,40 @@ const ProfileForm: FC = () => {
             <div className={classes.settingsImg}>
               {authUser.avatar && (
                 <img
-                  src={`${hostDomain}/${authUser.avatar}`}
+                  src={
+                    selectedImage
+                      ? URL.createObjectURL(selectedImage)
+                      : `${hostDomain}/${authUser.avatar}`
+                  }
                   alt={`${authUser.name}`}
                 />
               )}
             </div>
-            <a
+            <input
+              id="fileInput"
+              type="file"
+              accept="image/*"
+              style={{ display: 'none' }}
+              onChange={(e) => {
+                e.preventDefault()
+                const file = e.target.files?.[0]
+                if (file) {
+                  setSelectedImage(file)
+                  sendContent(file)
+                }
+              }}
+            />
+            <button
               className={classes.settingsChangePhoto}
-              onClick={(e) => sendContent(e)}
-              href="/"
+              onClick={() => {
+                const fileInput = document.getElementById('fileInput')
+                if (fileInput) {
+                  fileInput.click()
+                }
+              }}
             >
               Заменить
-            </a>
-            <input
-              type={'file'}
-              accept={'image/*'}
-              onChange={(e) => uploadContent(e)}
-            />
+            </button>
           </div>
           <div className={classes.settingsRight}>
             <form

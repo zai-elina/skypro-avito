@@ -3,10 +3,12 @@ import { IUser } from '../../types'
 
 interface IUserSliceInitial {
   user: IUser
+  userList: IUser[]
 }
 
 const initialState: IUserSliceInitial = {
   user: {} as IUser,
+  userList: [],
 }
 
 export const userSlice = createSlice({
@@ -19,9 +21,12 @@ export const userSlice = createSlice({
     logOutUser: (state, action) => {
       state.user = {} as IUser
     },
+    setUserList: (state, action) => {
+      state.userList = action.payload
+    },
   },
 })
 
-export const { setUser, logOutUser } = userSlice.actions
+export const { setUser, logOutUser, setUserList } = userSlice.actions
 
 export default userSlice.reducer

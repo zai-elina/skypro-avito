@@ -68,6 +68,9 @@ export const userApi = api.injectEndpoints({
       }),
       invalidatesTags: ['Profile'],
     }),
+    getAllUsers: builder.query<IUser, unknown>({
+      query: () => `user/all`,
+    }),
   }),
 })
 
@@ -77,4 +80,5 @@ export const {
   useGetUserQuery,
   useChangeAvatarMutation,
   useChangeUserDataMutation,
+  useGetAllUsersQuery
 } = userApi

@@ -13,7 +13,6 @@ import {
 import dayjs from 'dayjs'
 import { hostDomain } from '../../constants'
 import {
-  changeSellerOfSelectedArticle,
   editArticleModal,
   openDeleteModal,
   openReviewsModal,
@@ -53,10 +52,6 @@ const Article: FC = () => {
       top: 0,
     })
   }, [])
-
-  useEffect(() => {
-    dispatch(changeSellerOfSelectedArticle(user))
-  }, [dispatch, user])
 
   const onClickDeleteButton = () => {
     dispatch(openDeleteModal(true))

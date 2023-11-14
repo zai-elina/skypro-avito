@@ -8,6 +8,7 @@ import { ProtectedRoute } from './ProtectedRoute'
 import ArticlePage from '../pages/articlePage/ArticlePage'
 import SellerProfilePage from '../pages/sellerProfilePage/SellerProfilePage'
 import ProfilePage from '../pages/profilePage/ProfilePage'
+import NotFound from '../pages/notFound/NotFound'
 
 const AppRoutes: FC = () => {
   return (
@@ -19,10 +20,10 @@ const AppRoutes: FC = () => {
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<ProfilePage />} />
         </Route>
-        {/* <Route path="*" element={<NotFound />} /> */}
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }

@@ -6,11 +6,17 @@
   height: 441px;
   display: flex;
   flex-direction: column;
+  transition: all 0.5s;
 }
 .cardImage {
   width: 270px;
   height: 270px;
   background-color: #f0f0f0;
+  border: 3px solid transparent;
+  transition: border 0.5s;
+}
+.cardImage:hover {
+  border: 3px solid#009ee4;
 }
 .cardImage img {
   width: 100%;

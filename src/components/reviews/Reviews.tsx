@@ -54,7 +54,7 @@ const Reviews: FC = () => {
       <div className={classes.modal__scroll}>
         <div className={classes.reviewContainer}>
           {comments.map((item) => (
-            <div className={classes.review}>
+            <div className={classes.review} key={item.id}>
               <div className={classes.reviewItem}>
                 <div className={classes.reviewLeft}>
                   <div className={classes.reviewImg}>
