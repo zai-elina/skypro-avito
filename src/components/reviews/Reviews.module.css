@@ -32,7 +32,6 @@
 
 .commentForm {
   margin-top: 5px;
-  margin-bottom: 15px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -43,6 +42,9 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 14px;
+  font-size: 16px;
+  line-height: 32px;
+  color: #000000;
 }
 .commentBlock label {
   margin-bottom: 14px;
@@ -97,6 +99,49 @@
   color: #0000004d;
 }
 
+.reviewContainer {
+  width: 100%;
+  height: 45vh;
+}
+.review {
+  display: flex;
+  margin: 15px 0;
+}
+.reviewItem {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.reviewLeft {
+  margin-right: 12px;
+}
+.reviewImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+.reviewImg img {
+  display: block;
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.reviewName {
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.reviewName span {
+  margin-left: 10px;
+  color: #5f5f5f;
+}
+.reviewTitle {
+  font-weight: 600;
+}
+
 @media screen and (max-width: 600px) {
   .modal__title {
     font-size: 24px;
@@ -123,6 +168,8 @@
   }
   .commentBlock {
     margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 28px;
   }
   .commentBlock label {
     display: none;
@@ -134,22 +181,7 @@
     font-size: 16px;
     line-height: 1;
   }
-  .form-newArt__area::-webkit-input-placeholder {
-    font-size: 14px;
-    line-height: 21px;
-    color: #c4c4c4;
-  }
-  .form-newArt__area:-ms-input-placeholder {
-    font-size: 14px;
-    line-height: 21px;
-    color: #c4c4c4;
-  }
-  .form-newArt__area::-ms-input-placeholder {
-    font-size: 14px;
-    line-height: 21px;
-    color: #c4c4c4;
-  }
-  .form-newArt__area::placeholder {
+  .commentTextarea::placeholder {
     font-size: 14px;
     line-height: 21px;
     color: #c4c4c4;

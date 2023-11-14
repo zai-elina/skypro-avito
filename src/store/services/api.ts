@@ -86,7 +86,7 @@ const baseQueryWithReauth = async (
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: baseQueryWithReauth,
-  tagTypes: ['ArticleList', 'Article', 'Profile'],
+  tagTypes: ['ArticleList', 'Article', 'Profile', 'Reviews'],
   endpoints: (builder) => ({
     getArticleListData: builder.query<IArticle[], unknown>({
       query: () => `ads`,

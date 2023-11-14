@@ -4,6 +4,7 @@ import ButtonHeader from '../buttons/buttonHeader/ButtonHeader'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../../store/reduxHook'
 import { openAddModal } from '../../../store/slices/articlesSlice'
+import { logOutUser } from '../../../store/slices/userSlice'
 
 const Header: FC = () => {
   const isAuth = Boolean(localStorage.getItem('access_token'))
@@ -29,6 +30,7 @@ const Header: FC = () => {
 
   const logOut = () => {
     localStorage.clear()
+    dispatch(logOutUser({}))
     navigate('/')
   }
 

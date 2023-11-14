@@ -68,7 +68,7 @@ const LoginPage: FC = () => {
               const { type, name, placeholder, rules } = input
               const id = nanoid()
               return (
-                <div key={id}>
+                <div key={id} style={{ width: '100%' }}>
                   <Input
                     type={type}
                     name={name}

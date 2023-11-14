@@ -3,18 +3,29 @@ import CloseButton from '../closeButton/CloseButton'
 import { useAppDispatch, useAppSelector } from '../../store/reduxHook'
 import { openReviewsModal } from '../../store/slices/articlesSlice'
 import classes from './Reviews.module.css'
-import { selectAtricleComments } from '../../store/selectors/articleSelectors'
+import {
+  selectAtricleComments,
+  selectSelectedArtile,
+} from '../../store/selectors/articleSelectors'
 import dayjs from 'dayjs'
 import { hostDomain } from '../../constants'
 import ButtonMain from '../layout/buttons/buttonMain/ButtonMain'
-import { useForm } from 'react-hook-form'
+import { FieldValues, useForm } from 'react-hook-form'
+import { useAddReviewMutation } from '../../store/services/articleList.api'
+import { selectUser } from '../../store/selectors/userSelector'
 
 const Reviews: FC = () => {
-  const dispatch = useAppDispatch()
   const comments = useAppSelector(selectAtricleComments)
+  const article = useAppSelector(selectSelectedArtile)
+  const authUser = useAppSelector(selectUser)
+  const [addReview] = useAddReviewMutation()
+  const dispatch = useAppDispatch()
   const { register, handleSubmit } = useForm()
 
-  const onSubmit = () => {}
+  const onSubmit = async (data: FieldValues) => {
+    await addReview({ id: article.id, text: data.text })
+  }
+  console.log(Object.keys(authUser).length === 0)
 
   return (
     <div>
@@ -34,27 +45,32 @@ const Reviews: FC = () => {
             {...register('text')}
           ></textarea>
         </div>
-        <ButtonMain type="submit" text="Опубликовать" onClick={() => {}} />
+        <ButtonMain
+          type="submit"
+          text="Опубликовать"
+          onClick={() => {}}
+          disabled={Object.keys(authUser).length === 0}
+        />
       </form>
       <div className={classes.modal__scroll}>
-        <div className="modal__reviews reviews">
+        <div className={classes.reviewContainer}>
           {comments.map((item) => (
-            <div className="reviews__review review">
-              <div className="review__item">
-                <div className="review__left">
-                  <div className="review__img">
+            <div className={classes.review}>
+              <div className={classes.reviewItem}>
+                <div className={classes.reviewLeft}>
+                  <div className={classes.reviewImg}>
                     <img src={`${hostDomain}/${item.author.avatar}`} alt="" />
                   </div>
                 </div>
-                <div className="review__right">
-                  <p className="review__name font-t">
+                <div className={classes.reviewRight}>
+                  <p className={classes.reviewName}>
                     {item.author.name}{' '}
                     <span>
                       {dayjs(item.created_on).format('D MMMM, YYYY HH:mm')}
                     </span>
                   </p>
-                  <h5 className="review__title font-t">Комментарий</h5>
-                  <p className="review__text font-t">{item.text}</p>
+                  <h5 className={classes.review__title}>Комментарий</h5>
+                  <p className={classes.review__text}>{item.text}</p>
                 </div>
               </div>
             </div>

@@ -18,6 +18,16 @@ export const articleList = api.injectEndpoints({
     }),
     getArticleDataComments: builder.query<IArticle, number>({
       query: (id) => `ads/${id}/comments`,
+      providesTags: (result) =>
+        Array.isArray(result)
+          ? [
+              ...result.map(({ id }) => ({
+                type: 'Reviews' as const,
+                id,
+              })),
+              'Reviews',
+            ]
+          : ['Reviews'],
     }),
     getUserArticles: builder.query<IArticle[], unknown>({
       query: () => ({ url: `ads/me` }),
@@ -64,6 +74,14 @@ export const articleList = api.injectEndpoints({
       }),
       invalidatesTags: ['Article'],
     }),
+    addReview: builder.mutation<IArticle[], { id: number; text: string }>({
+      query: (value) => ({
+        url: `ads/${value.id}/comments`,
+        method: 'POST',
+        body: { text: value.text },
+      }),
+      invalidatesTags: ['Article', 'Reviews'],
+    }),
   }),
 })
 
@@ -75,4 +93,5 @@ export const {
   useGetArticleDataCommentsQuery,
   useEditArticleMutation,
   useEditArticleImgMutation,
+  useAddReviewMutation,
 } = articleList
