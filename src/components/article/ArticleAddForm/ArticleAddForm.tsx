@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 import classes from './ArticleAddForm.module.css'
 import ButtonMain from '../../layout/buttons/buttonMain/ButtonMain'
@@ -8,9 +8,13 @@ import { useCreateArticleMutation } from '../../../store/services/articleList.ap
 import CloseButton from '../../closeButton/CloseButton'
 
 const ArticleAddForm = () => {
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, reset } = useForm()
   const dispatch = useAppDispatch()
   const [createArticle] = useCreateArticleMutation()
+
+  useEffect(() => {
+    return () => reset()
+  },[reset])
 
   const onSubmit = async (data: FieldValues) => {
     const { title, description, price } = data

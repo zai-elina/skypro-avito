@@ -63,9 +63,10 @@ const Article: FC = () => {
       alert('Произошла ошибка')
     }
     navigate('/')
+    dispatch(openDeleteModal(false))
   }
 
-  const onClickEditButton = async () => {
+  const onClickEditButton = () => {
     dispatch(editArticleModal(true))
   }
 

@@ -71,7 +71,7 @@ export const articleList = api.injectEndpoints({
           price: value.price,
         },
       }),
-      invalidatesTags: ['Article'],
+      invalidatesTags: ['Article', 'ArticleList'],
     }),
     editArticleImg: builder.mutation<
       IArticle[],
@@ -90,7 +90,7 @@ export const articleList = api.injectEndpoints({
         method: 'POST',
         body: { text: value.text },
       }),
-      invalidatesTags: ['Article', 'Reviews'],
+      invalidatesTags: ['ArticleList', 'Reviews'],
     }),
   }),
 })
