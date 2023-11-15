@@ -46,7 +46,7 @@ const ArticleEditForm = () => {
       })
 
       if (selectedImage) {
-         await editArticleImg({
+        await editArticleImg({
           id: article.id,
           file: formData,
         })
@@ -61,7 +61,7 @@ const ArticleEditForm = () => {
   return (
     <>
       <h3 className={classes.modal__title}>Редактировать объявление</h3>
-      <CloseButton onClick={onClose}/>
+      <CloseButton onClick={onClose} />
       <form
         className={classes.modal__form_newArt}
         name="formEditArt"

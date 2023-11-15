@@ -31,6 +31,16 @@ export const articleList = api.injectEndpoints({
     }),
     getUserArticles: builder.query<IArticle[], unknown>({
       query: () => ({ url: `ads/me` }),
+      providesTags: (result) =>
+        Array.isArray(result)
+          ? [
+              ...result.map(({ id }) => ({
+                type: 'MyArticles' as const,
+                id,
+              })),
+              'MyArticles',
+            ]
+          : ['MyArticles'],
     }),
     createArticle: builder.mutation<IArticle[], IArticleForm>({
       query: (value) => ({
@@ -42,14 +52,14 @@ export const articleList = api.injectEndpoints({
           price: value.price,
         },
       }),
-      invalidatesTags: ['Profile'],
+      invalidatesTags: ['MyArticles'],
     }),
     deleteArticle: builder.mutation<IArticle[], number>({
       query: (id) => ({
         url: `ads/${id}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['ArticleList'],
+      invalidatesTags: ['ArticleList', 'MyArticles'],
     }),
     editArticle: builder.mutation<IArticle[], IArticleForm>({
       query: (value) => ({
