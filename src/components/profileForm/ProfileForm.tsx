@@ -46,6 +46,7 @@ const ProfileForm: FC = () => {
     data: Pick<IUser, 'name' | 'phone' | 'surname' | 'city'>,
   ) => {
     await changeUserData(data)
+    setIsButtonDisabled(true)
   }
 
   const sendContent = async (file: File) => {
