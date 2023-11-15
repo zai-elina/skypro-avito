@@ -5,14 +5,14 @@ import { useMediaQuery } from 'react-responsive'
 
 const Logo = () => {
   const isMobile = useMediaQuery({
-    query: '(max-width: 590px)',
+    query: '(max-width: 620px)',
   })
   return (
     <Link to="/">
       {isMobile ? (
-        <img className={classes.logoMob} src="./img/logo-mob.png" alt="logo" />
+        <img className={classes.logoMob} src="../img/logo-mob.png" alt="logo" />
       ) : (
-        <img className={classes.logo} src="./img/logo.png" alt="logo" />
+        <img className={classes.logo} src="../img/logo.png" alt="logo" />
       )}
     </Link>
   )

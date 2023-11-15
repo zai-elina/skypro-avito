@@ -1,14 +1,12 @@
 .wrapper {
   width: 100%;
   min-height: 100%;
-  overflow: hidden;
 }
 
 .containerSignup {
   max-width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0 auto;
-  position: relative;
   background-color: #f4f5f6;
 }
 
@@ -21,15 +19,14 @@
 }
 
 .modalBlock {
-  position: absolute;
-  z-index: 2;
-  left: calc(50% - 183px);
-  top: calc(50% - 323.5px);
-  opacity: 1;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .modalFormLogin {
   width: 366px;
-  height: 647px;
+  height: auto;
   background-color: #ffffff;
   border-radius: 12px;
   display: flex;
@@ -59,18 +56,13 @@
   align-items: center;
   justify-content: center;
 }
-.modalBtnSignupEnt a {
-  width: 100%;
-  height: 100%;
+.modalBtnSignupEnt {
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
   letter-spacing: -0.05px;
   color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 @media screen and (max-width: 768px) {

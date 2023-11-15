@@ -1,0 +1,81 @@
+.profileSell {
+  width: 100%;
+  padding: 0 0 40px;
+}
+.profileSellContent {
+  width: 100%;
+}
+.profileSellSeller {
+  display: flex;
+  align-items: top;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+.sellerLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 50px;
+}
+.sellerImg {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+.sellerImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.sellerRight {
+  width: auto;
+}
+
+.sellerText {
+  color: hsl(0, 0%, 37%);
+  margin-top: 10px;
+}
+.sellerImgMob {
+  display: none;
+}
+@media screen and (max-width: 890px) {
+  .profileSellContent {
+    max-width: 834px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .profileSellSeller {
+    justify-content: center;
+  }
+  .sellerLeft {
+    display: none;
+    margin-right: 0px;
+  }
+  .sellerImg {
+    display: none;
+  }
+  .sellerRight {
+    width: 100%;
+  }
+  .sellerText {
+    margin-top: 6px;
+  }
+  .sellerImgMob {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 20px 0;
+  }
+  .imgMob {
+    display: block;
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+  }
+}

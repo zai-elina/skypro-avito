@@ -1,0 +1,274 @@
+.modal__title:hover::before {
+  border-top: 2px solid #0080c1;
+  border-left: 2px solid #0080c1;
+}
+
+.modal__title {
+  font-size: 32px;
+  line-height: 46px;
+  font-weight: 500;
+  color: #000000;
+}
+.modal__form_newArt {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form_newArt__block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.modal__form_newArt label {
+  margin-bottom: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+.modal__form_newArt__input,
+.modal__form_newArt__area,
+.modal__form_newArt__input_price {
+  padding: 13px 19px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  font-size: 16px;
+  line-height: 1;
+}
+.modal__form_newArt__input {
+  width: 100%;
+  font-size: 16px;
+  line-height: 24px;
+}
+.modal__form_newArt__input::-moz-placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 0.3019607843);
+}
+.modal__form_newArt__input::placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 0.3019607843);
+}
+.modal__form_newArt__area {
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  max-height: 200px;
+  font-size: 16px;
+  line-height: 24px;
+}
+.modal__form_newArt__area::-moz-placeholder {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 0.3019607843);
+}
+.modal__form_newArt__area::placeholder {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 0.3019607843);
+}
+.modal__form_newArt__p {
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+.modal__form_newArt__p span {
+  margin-left: 10px;
+  color: rgba(0, 0, 0, 0.3);
+}
+.modal__form_newArt__input_price {
+  margin-left: 10px;
+  width: 200px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+.modal__form_newArt__input_price::-moz-placeholder {
+  text-align: end;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+.modal__form_newArt__input_price::placeholder {
+  text-align: end;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.modal__form_newArt__bar_img {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.modal__form_newArt__img_cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #f0f0f0;
+  z-index: -1;
+}
+.modal__form_newArt__img_cover::after,
+.modal__form_newArt__img_cover::before {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #d9d9d9;
+  top: 50%;
+  right: calc(50% - 15px);
+}
+.modal__form_newArt__img_cover::before {
+  transform: rotate(90deg);
+}
+.modal__form_newArt__img {
+  width: 90px;
+  height: 90px;
+  margin-right: 10px;
+  position: relative;
+  z-index: 0;
+}
+.modal__form_newArt__img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  z-index: 2;
+}
+
+@media screen and (max-width: 600px) {
+  .modal__title {
+    font-size: 24px;
+    line-height: 29px;
+    padding: 0 0 0 26px;
+    position: relative;
+  }
+  .modal__title::before {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: transparent;
+    border-top: 2px solid #000000;
+    border-left: 2px solid #000000;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 9px;
+    left: 0;
+    cursor: pointer;
+  }
+  .modal__modal__form_newArt {
+    margin-top: 22px;
+  }
+  .modal__form_newArt__block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+  }
+  .modal__form_newArt label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000000;
+  }
+  .modal__form_newArt__input,
+  .modal__form_newArt__area,
+  .modal__form_newArt__input_price {
+    padding: 9px 17px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    font-size: 16px;
+    line-height: 1;
+  }
+  .modal__form_newArt__input {
+    width: 100%;
+  }
+  .modal__form_newArt__input::-moz-placeholder {
+    font-size: 14px;
+    line-height: 21px;
+    color: #c4c4c4;
+  }
+  .modal__form_newArt__input::placeholder {
+    font-size: 14px;
+    line-height: 21px;
+    color: #c4c4c4;
+  }
+  .modal__form_newArt__area {
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    max-height: 107px;
+  }
+  .modal__form_newArt__area::-moz-placeholder {
+    font-size: 14px;
+    line-height: 21px;
+    color: #c4c4c4;
+  }
+  .modal__form_newArt__area::placeholder {
+    font-size: 14px;
+    line-height: 21px;
+    color: #c4c4c4;
+  }
+  .modal__form_newArt__p {
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 10px;
+  }
+  .modal__form_newArt__p span {
+    display: block;
+    margin-left: 0px;
+    color: rgba(0, 0, 0, 0.3);
+  }
+  .modal__form_newArt__input_price_cover {
+    width: 21px;
+    height: 21px;
+    font-size: 14px;
+    line-height: 21px;
+    bottom: 9px;
+    left: auto;
+    right: 18px;
+  }
+  .modal__form_newArt__input_price_cover::after {
+    font-size: 14px;
+    line-height: 21px;
+  }
+  .modal__form_newArt__input_price {
+    width: 100%;
+  }
+  .modal__form_newArt__input_price::-moz-placeholder {
+    font-size: 14px;
+    line-height: 21px;
+    color: #000000;
+  }
+  .modal__form_newArt__input_price::placeholder {
+    font-size: 14px;
+    line-height: 21px;
+    color: #000000;
+  }
+}

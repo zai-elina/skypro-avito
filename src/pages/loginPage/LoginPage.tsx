@@ -1,21 +1,107 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import classes from './LoginPage.module.css'
 import Input from '../../components/layout/input/Input'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { IFormFieldsRegister } from '../../types'
+import { useLoginUserMutation } from '../../store/services/user.api'
+import { nanoid } from '@reduxjs/toolkit'
+import { useAppSelector } from '../../store/reduxHook'
+import { selectLoginError } from '../../store/selectors/userSelector'
+
+const formInputsLogin = [
+  {
+    type: 'text',
+    name: 'email',
+    placeholder: 'email',
+    id: 'loginReg',
+    rules: {
+      required: 'Почта обязательное поле',
+      pattern: {
+        value:
+          /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu,
+        message: 'Почта не валидна',
+      },
+    },
+  },
+  {
+    type: 'password',
+    name: 'password',
+    placeholder: 'Пароль',
+    id: 'passwordFirst',
+    rules: { required: 'Пароль обязательное поле' },
+  },
+]
 
 const LoginPage: FC = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormFieldsRegister>()
+  const [loginUser, { data }] = useLoginUserMutation()
+  const navigate = useNavigate()
+  const error = useAppSelector(selectLoginError)
+
+  useEffect(() => {
+    if (data) {
+      localStorage.setItem('access_token', data.access_token)
+      localStorage.setItem('refresh_token', data.refresh_token)
+      navigate('/')
+    }
+  }, [data, navigate])
+
+  useEffect(() => {
+    if (error.data) {
+      let text = error.data.detail
+      if (text === 'Incorrect email') {
+        text = 'Неправильная почта'
+      } else if (text === 'Incorrect password') {
+        text = 'Неправильная пароль'
+      }
+      alert(text)
+    }
+  }, [error])
+
+  const onSubmit: SubmitHandler<IFormFieldsRegister> = async (data) => {
+    const res = await loginUser(data)
+    console.log(res)
+  }
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.containerEnter}>
         <div className={classes.modalBlock}>
-          <form className={classes.modalFormLogin} id="formLogIn" action="#">
+          <form
+            className={classes.modalFormLogin}
+            name="formLogIn"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className={classes.modalLogo}>
               <img src="./img/logo_modal.png" alt="logo" />
             </div>
-            <Input type="text" name="login" placeholder="email" />
-            <Input type="password" name="password" placeholder="Пароль" />
-            <button className={classes.modalBtnEnter} id="btnEnter">
-              <a href="#">Войти</a>
+            {formInputsLogin.map((input) => {
+              const { type, name, placeholder, rules } = input
+              const id = nanoid()
+              return (
+                <div key={id} style={{ width: '100%' }}>
+                  <Input
+                    type={type}
+                    name={name}
+                    placeholder={placeholder}
+                    register={register}
+                    rules={rules}
+                  />
+                  {errors[name as keyof IFormFieldsRegister] && (
+                    <p style={{ color: 'red' }}>
+                      {errors[name as keyof IFormFieldsRegister]?.message}
+                    </p>
+                  )}
+                </div>
+              )
+            })}
+            <button className={classes.modalBtnEnter} type="submit">
+              <div>Войти</div>
             </button>
             <button className={classes.modalBtnSignup} id="btnSignUp">
               <Link to="/register">Зарегистрироваться</Link>
