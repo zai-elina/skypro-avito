@@ -6,6 +6,8 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { IFormFieldsRegister } from '../../types'
 import { useLoginUserMutation } from '../../store/services/user.api'
 import { nanoid } from '@reduxjs/toolkit'
+import { useAppSelector } from '../../store/reduxHook'
+import { selectLoginError } from '../../store/selectors/userSelector'
 
 const formInputsLogin = [
   {
@@ -39,6 +41,7 @@ const LoginPage: FC = () => {
   } = useForm<IFormFieldsRegister>()
   const [loginUser, { data }] = useLoginUserMutation()
   const navigate = useNavigate()
+  const error = useAppSelector(selectLoginError)
 
   useEffect(() => {
     if (data) {
@@ -48,8 +51,21 @@ const LoginPage: FC = () => {
     }
   }, [data, navigate])
 
-  const onSubmit: SubmitHandler<IFormFieldsRegister> = (data) => {
-    loginUser(data)
+  useEffect(() => {
+    if (error.data) {
+      let text = error.data.detail
+      if (text === 'Incorrect email') {
+        text = 'Неправильная почта'
+      } else if (text === 'Incorrect password') {
+        text = 'Неправильная пароль'
+      }
+      alert(text)
+    }
+  }, [error])
+
+  const onSubmit: SubmitHandler<IFormFieldsRegister> = async (data) => {
+    const res = await loginUser(data)
+    console.log(res)
   }
 
   return (

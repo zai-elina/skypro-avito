@@ -4,13 +4,13 @@ import { IUser } from '../../types'
 interface IUserSliceInitial {
   user: IUser
   userList: IUser[]
-  errorLogin: string
+  errorLogin: { status: number; data: { detail: string } }
 }
 
 const initialState: IUserSliceInitial = {
   user: {} as IUser,
   userList: [],
-  errorLogin: '',
+  errorLogin: {} as { status: number; data: { detail: string } },
 }
 
 export const userSlice = createSlice({

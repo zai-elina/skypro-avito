@@ -34,11 +34,13 @@ const baseQueryWithReauth = async (
   if (result?.error?.status !== 401) {
     return result
   } else {
+    api.dispatch(setError(result?.error))
     setError(result?.error)
   }
 
   const forceLogout = () => {
     localStorage.clear()
+    window.location.href = '/login'
   }
 
   const token = localStorage.getItem('access_token')
