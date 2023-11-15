@@ -11,6 +11,7 @@ import {
   BaseQueryApi,
   QueryReturnValue,
 } from '@reduxjs/toolkit/dist/query/baseQueryTypes'
+import { setError } from '../slices/userSlice'
 
 const baseQueryWithReauth = async (
   args: string | FetchArgs,
@@ -32,11 +33,12 @@ const baseQueryWithReauth = async (
 
   if (result?.error?.status !== 401) {
     return result
+  } else {
+    setError(result?.error)
   }
 
   const forceLogout = () => {
     localStorage.clear()
-    window.location.href = '/login'
   }
 
   const token = localStorage.getItem('access_token')

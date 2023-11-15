@@ -4,11 +4,13 @@ import { IUser } from '../../types'
 interface IUserSliceInitial {
   user: IUser
   userList: IUser[]
+  errorLogin: string
 }
 
 const initialState: IUserSliceInitial = {
   user: {} as IUser,
   userList: [],
+  errorLogin: '',
 }
 
 export const userSlice = createSlice({
@@ -24,9 +26,12 @@ export const userSlice = createSlice({
     setUserList: (state, action) => {
       state.userList = action.payload
     },
+    setError: (state, action) => {
+      state.errorLogin = action.payload
+    },
   },
 })
 
-export const { setUser, logOutUser, setUserList } = userSlice.actions
+export const { setUser, logOutUser, setUserList, setError } = userSlice.actions
 
 export default userSlice.reducer
