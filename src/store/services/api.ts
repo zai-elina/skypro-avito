@@ -40,7 +40,6 @@ const baseQueryWithReauth = async (
 
   const forceLogout = () => {
     localStorage.clear()
-    window.location.href = '/login'
   }
 
   const token = localStorage.getItem('access_token')

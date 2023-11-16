@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 import classes from './ArticleAddForm.module.css'
 import ButtonMain from '../../layout/buttons/buttonMain/ButtonMain'
@@ -12,10 +12,6 @@ const ArticleAddForm = () => {
   const dispatch = useAppDispatch()
   const [createArticle] = useCreateArticleMutation()
 
-  useEffect(() => {
-    return () => reset()
-  },[reset])
-
   const onSubmit = async (data: FieldValues) => {
     const { title, description, price } = data
     await createArticle({
@@ -24,12 +20,18 @@ const ArticleAddForm = () => {
       price: price,
     })
     dispatch(openAddModal(false))
+    reset()
   }
 
   return (
     <>
       <h3 className={classes.modal__title}>Новое объявление</h3>
-      <CloseButton onClick={() => dispatch(openAddModal(false))} />
+      <CloseButton
+        onClick={() => {
+          dispatch(openAddModal(false))
+          reset()
+        }}
+      />
       <form
         className={classes.modal__form_newArt}
         name="formNewArt"

@@ -84,7 +84,7 @@ const Article: FC = () => {
           }}
         />{' '}
         <ButtonMain
-          text="Снять с публикации"
+          text="Удалить"
           onClick={onClickDeleteButton}
           style={{
             whiteSpace: 'pre-line',
@@ -165,7 +165,7 @@ const Article: FC = () => {
         closeModal={() => dispatch(openDeleteModal(false))}
       >
         <CloseButton onClick={() => dispatch(openDeleteModal(false))} />
-        <div style={{ marginTop: '30px' }}>Хотите скрыть объявление?</div>
+        <div style={{ marginTop: '30px' }}>Хотите удалить объявление?</div>
         <div
           style={{
             display: 'flex',
@@ -173,7 +173,7 @@ const Article: FC = () => {
             marginTop: '20px',
           }}
         >
-          <ButtonMain text="Скрыть" onClick={onClickDeleteArticle} />
+          <ButtonMain text="Удалить" onClick={onClickDeleteArticle} />
         </div>
       </Modal>
       <Modal

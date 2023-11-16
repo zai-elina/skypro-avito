@@ -15,19 +15,7 @@
   grid-auto-rows: 441px;
   grid-gap: 40px 26px;
   justify-content: center;
-  overflow-y: auto;
   scrollbar-color: #ffffff #2e2e2e;
-  scrollbar-width: thin;
-  scrollbar-width: 0px;
-  height: 922px;
-}
-.cards::-webkit-scrollbar {
-  width: 0px;
-  background-color: #009ee4;
-}
-.cards::-webkit-scrollbar-thumb {
-  background-color: #0080c1;
-  border-radius: 3px;
 }
 @media screen and (max-width: 1158px) {
   .cards {
