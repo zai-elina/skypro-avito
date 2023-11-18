@@ -74,7 +74,6 @@ export const articleList = api.injectEndpoints({
             }
           })
         }
-        console.log(queryString);
         return {
           url: `/ads?${queryString}`,
           method: 'POST',
