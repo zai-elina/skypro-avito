@@ -76,7 +76,7 @@ const ProfileForm: FC = () => {
               )}
             </div>
             <input
-              id="fileInput"
+              id="fileAvatar"
               type="file"
               accept="image/*"
               style={{ display: 'none' }}

@@ -4,7 +4,10 @@ import classes from './ArticleAddForm.module.css'
 import ButtonMain from '../../layout/buttons/buttonMain/ButtonMain'
 import { useAppDispatch } from '../../../store/reduxHook'
 import { openAddModal } from '../../../store/slices/articlesSlice'
-import { useCreateArticleMutation } from '../../../store/services/articleList.api'
+import {
+  useCreateArticleMutation,
+  useEditArticleImgMutation,
+} from '../../../store/services/articleList.api'
 import CloseButton from '../../closeButton/CloseButton'
 import { useNavigate } from 'react-router-dom'
 
@@ -14,6 +17,7 @@ const ArticleAddForm = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const [createArticle] = useCreateArticleMutation()
+  const [editArticleImg] = useEditArticleImgMutation()
 
   const onChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const index = Number(e.target.dataset.index)
@@ -39,12 +43,26 @@ const ArticleAddForm = () => {
         price: priceNew,
       })
     } else {
-      await createArticle({
-        title: titleNew,
-        description: descriptionNew,
-        price: priceNew,
-        images: selectedImages,
-      })
+      try {
+        const result: any = await createArticle({
+          title: titleNew,
+          description: descriptionNew,
+          price: priceNew,
+          images: selectedImages,
+        })
+        if (result) {
+          selectedImages.forEach((image, index) => {
+            const formData = new FormData()
+            formData.append(`file`, image)
+            editArticleImg({
+              id: result.data.id,
+              file: formData,
+            })
+          })
+        }
+      } catch (e) {
+        console.error(e)
+      }
     }
     dispatch(openAddModal(false))
     reset()
