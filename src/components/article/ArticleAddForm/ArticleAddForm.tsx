@@ -40,6 +40,7 @@ const ArticleAddForm = () => {
         <div className={classes.modal__form_newArt__block}>
           <label htmlFor="name">Название</label>
           <input
+            id="name"
             className={classes.modal__form_newArt__input}
             type="text"
             placeholder="Введите название"
@@ -49,6 +50,7 @@ const ArticleAddForm = () => {
         <div className={classes.modal__form_newArt__block}>
           <label htmlFor="text">Описание</label>
           <textarea
+            id="text"
             rows={20}
             className={classes.modal__form_newArt__area}
             placeholder="Введите описание"
@@ -58,6 +60,7 @@ const ArticleAddForm = () => {
         <div className={classes.modal__form_newArt__block}>
           <label htmlFor="price">Цена</label>
           <input
+            id="price"
             className={classes.modal__form_newArt__input_price}
             type="number"
             placeholder="₽"

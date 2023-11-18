@@ -36,7 +36,7 @@ const Reviews: FC = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className={classes.commentBlock}>
-          <label htmlFor="text">Добавить отзыв</label>
+          <label htmlFor="formArea">Добавить отзыв</label>
           <textarea
             className={classes.commentTextarea}
             id="formArea"

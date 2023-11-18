@@ -118,7 +118,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 10px;
   overflow: hidden;
 }
@@ -130,6 +129,7 @@
   left: 0;
   background-color: #f0f0f0;
   z-index: -1;
+  cursor: pointer;
 }
 .modal__form_newArt__img_cover::after,
 .modal__form_newArt__img_cover::before {
@@ -145,6 +145,10 @@
 .modal__form_newArt__img_cover::before {
   transform: rotate(90deg);
 }
+.modal__form_newArt__img_cover:hover::after,
+.modal__form_newArt__img_cover:hover::before {
+  background-color: #009ee4;
+}
 .modal__form_newArt__img {
   width: 90px;
   height: 90px;
@@ -155,8 +159,7 @@
 .modal__form_newArt__img img {
   display: block;
   width: 100%;
-  height: auto;
-  -o-object-fit: cover;
+  height: 100%;
   object-fit: cover;
   z-index: 2;
 }
