@@ -76,7 +76,7 @@ const ProfileForm: FC = () => {
               )}
             </div>
             <input
-              id="fileInput"
+              id="fileAvatar"
               type="file"
               accept="image/*"
               style={{ display: 'none' }}
@@ -108,7 +108,7 @@ const ProfileForm: FC = () => {
               onFocus={() => setIsButtonDisabled(false)}
             >
               <div className={classes.settingsDiv}>
-                <label htmlFor="name">Имя</label>
+                <label htmlFor="settings-fname">Имя</label>
                 <input
                   className={classes.settings__fname}
                   id="settings-fname"
@@ -119,7 +119,7 @@ const ProfileForm: FC = () => {
               </div>
 
               <div className={classes.settingsDiv}>
-                <label htmlFor="lname">Фамилия</label>
+                <label htmlFor="settings-lname">Фамилия</label>
                 <input
                   className={classes.settings__lname}
                   id="settings-lname"
@@ -130,7 +130,7 @@ const ProfileForm: FC = () => {
               </div>
 
               <div className={classes.settingsDiv}>
-                <label htmlFor="city">Город</label>
+                <label htmlFor="settings-city">Город</label>
                 <input
                   className={classes.settings__city}
                   id="settings-city"
@@ -141,7 +141,7 @@ const ProfileForm: FC = () => {
               </div>
 
               <div className={classes.settingsDiv}>
-                <label htmlFor="phone">Телефон</label>
+                <label htmlFor="settings-phone">Телефон</label>
                 <input
                   className={classes.settings__phone}
                   id="settings-phone"

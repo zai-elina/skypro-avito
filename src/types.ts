@@ -31,6 +31,7 @@ export interface IArticleForm {
   title: string
   description: string
   price: number
+  images?: File[]
 }
 
 export interface IFormFieldsRegister {

@@ -63,14 +63,20 @@ const RegisterPage: FC = () => {
     formState: { errors },
   } = useForm<IFormFieldsRegister>()
   const [passwordEqual, setPasswordEqual] = useState<string>('')
-  const [registerUser, { data }] = useRegisterUserMutation()
+  const [registerUser, { data, error }] = useRegisterUserMutation()
   const navigate = useNavigate()
 
   useEffect(() => {
     if (data) {
       navigate('/login')
     }
-  })
+  }, [data, navigate])
+
+  useEffect(() => {
+    if (error?.status === 400) {
+      alert('Пользователь с данной почтой уже существует')
+    }
+  }, [error, navigate])
 
   const onSubmit: SubmitHandler<IFormFieldsRegister> = (data) => {
     if (data.password !== data.second_password) {
@@ -98,7 +104,7 @@ const RegisterPage: FC = () => {
               const { type, name, placeholder, rules } = input
               const id = nanoid()
               return (
-                <>
+                <div key={id} style={{ width: '100%', position: 'relative' }}>
                   <Input
                     key={id}
                     type={type}
@@ -108,11 +114,17 @@ const RegisterPage: FC = () => {
                     rules={rules}
                   />
                   {errors[name as keyof IFormFieldsRegister] && (
-                    <p style={{ color: 'red' }}>
+                    <p
+                      style={{
+                        color: 'red',
+                        position: 'absolute',
+                        bottom: '-20px',
+                      }}
+                    >
                       {errors[name as keyof IFormFieldsRegister]?.message}
                     </p>
                   )}
-                </>
+                </div>
               )
             })}
             <button className={classes.modalBtnSignupEnt} type="submit">

@@ -64,8 +64,7 @@ const LoginPage: FC = () => {
   }, [error])
 
   const onSubmit: SubmitHandler<IFormFieldsRegister> = async (data) => {
-    const res = await loginUser(data)
-    console.log(res)
+    await loginUser(data)
   }
 
   return (
@@ -84,7 +83,7 @@ const LoginPage: FC = () => {
               const { type, name, placeholder, rules } = input
               const id = nanoid()
               return (
-                <div key={id} style={{ width: '100%' }}>
+                <div key={id} style={{ width: '100%', position: 'relative' }}>
                   <Input
                     type={type}
                     name={name}
@@ -93,7 +92,13 @@ const LoginPage: FC = () => {
                     rules={rules}
                   />
                   {errors[name as keyof IFormFieldsRegister] && (
-                    <p style={{ color: 'red' }}>
+                    <p
+                      style={{
+                        color: 'red',
+                        position: 'absolute',
+                        bottom: '-20px',
+                      }}
+                    >
                       {errors[name as keyof IFormFieldsRegister]?.message}
                     </p>
                   )}

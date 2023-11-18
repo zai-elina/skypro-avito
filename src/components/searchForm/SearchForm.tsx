@@ -1,7 +1,6 @@
 import React, { FC, useState } from 'react'
 import classes from './Search.module.css'
 import { useMediaQuery } from 'react-responsive'
-import ButtonMain from '../layout/buttons/buttonMain/ButtonMain'
 import { useAppDispatch, useAppSelector } from '../../store/reduxHook'
 import { selectArtticleList } from '../../store/selectors/articleSelectors'
 import { changeSearchResultArticleList } from '../../store/slices/articlesSlice'
@@ -35,7 +34,7 @@ const SearchForm: FC = () => {
       {isMobile ? (
         <input
           className={classes.searchTextMob}
-          type="text"
+          type="search"
           placeholder="Поиск"
           name="search-mob"
           value={search}
@@ -45,24 +44,17 @@ const SearchForm: FC = () => {
           }}
         />
       ) : (
-        <>
-          <input
-            className={classes.searchText}
-            type="text"
-            placeholder="Поиск по объявлениям"
-            name="searchInput"
-            value={search}
-            onChange={(e) => {
-              setSearch(e.target.value)
-            }}
-            onKeyPress={(e) => {
-              if (e.key === 'Enter') {
-                searchData()
-              }
-            }}
-          />
-          <ButtonMain text="Найти" onClick={searchData} />
-        </>
+        <input
+          className={classes.searchText}
+          type="search"
+          placeholder="Поиск по объявлениям"
+          name="searchInput"
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value)
+            searchData()
+          }}
+        />
       )}
     </div>
   )
