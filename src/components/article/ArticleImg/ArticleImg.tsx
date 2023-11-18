@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react'
 import classes from './ArticleImg.module.css'
 import { IImage } from '../../../types'
 import { hostDomain } from '../../../constants'
+import defaultImage from '../../../assets/img/box.jpg'
 
 interface IAtricleImg {
   images: IImage[]
@@ -20,7 +21,7 @@ const ArticleImg: FC<IAtricleImg> = ({ images, title }) => {
             alt={title}
           />
         ) : (
-          <img src="../../img/box.jpg" alt={title} />
+          <img src={`${defaultImage}`} alt={title} />
         )}
       </div>
       <div className={classes.articleImgBar}>
