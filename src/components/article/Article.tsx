@@ -62,7 +62,7 @@ const Article: FC = () => {
     if (deleteError) {
       alert('Произошла ошибка')
     }
-    navigate('/')
+    navigate('/profile')
     dispatch(openDeleteModal(false))
   }
 

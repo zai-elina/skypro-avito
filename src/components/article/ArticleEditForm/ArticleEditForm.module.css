@@ -117,6 +117,7 @@
 .modal__form_newArt__bar_img {
   display: flex;
   flex-wrap: wrap;
+  row-gap: 12px;
   flex-direction: row;
   align-items: center;
   margin-bottom: 10px;

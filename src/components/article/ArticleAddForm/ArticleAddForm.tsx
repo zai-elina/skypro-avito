@@ -6,7 +6,7 @@ import { useAppDispatch } from '../../../store/reduxHook'
 import { openAddModal } from '../../../store/slices/articlesSlice'
 import { useCreateArticleMutation } from '../../../store/services/articleList.api'
 import CloseButton from '../../closeButton/CloseButton'
-import { useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const ArticleAddForm = () => {
   const [selectedImages, setSelectedImages] = useState<File[]>([])
@@ -31,18 +31,18 @@ const ArticleAddForm = () => {
   }
 
   const onSubmit = async (data: FieldValues) => {
-    const { title, description, price } = data
+    const { titleNew, descriptionNew, priceNew } = data
     if (selectedImages.length === 0) {
       await createArticle({
-        title: title,
-        description: description,
-        price: price,
+        title: titleNew,
+        description: descriptionNew,
+        price: priceNew,
       })
     } else {
       await createArticle({
-        title: title,
-        description: description,
-        price: price,
+        title: titleNew,
+        description: descriptionNew,
+        price: priceNew,
         images: selectedImages,
       })
     }
@@ -58,6 +58,7 @@ const ArticleAddForm = () => {
       <CloseButton
         onClick={() => {
           dispatch(openAddModal(false))
+          setSelectedImages([])
           reset()
         }}
       />
@@ -67,34 +68,34 @@ const ArticleAddForm = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className={classes.modal__form_newArt__block}>
-          <label htmlFor="name">Название</label>
+          <label htmlFor="newArtName">Название</label>
           <input
-            id="name"
+            id="newArtName"
             className={classes.modal__form_newArt__input}
             type="text"
             placeholder="Введите название"
-            {...register('title')}
+            {...register('titleNew')}
           />
         </div>
         <div className={classes.modal__form_newArt__block}>
-          <label htmlFor="text">Описание</label>
+          <label htmlFor="newArttext">Описание</label>
           <textarea
-            id="text"
+            id="newArttext"
             rows={20}
             className={classes.modal__form_newArt__area}
             placeholder="Введите описание"
-            {...register('description')}
+            {...register('descriptionNew')}
           ></textarea>
         </div>
         <div className={classes.modal__form_newArt__block}>
-          <label htmlFor="images">Фотографии товара не более 5</label>
-          <div className={classes.modal__form_newArt__bar_img} id="images">
+          <label htmlFor="newImages">Фотографии товара не более 5</label>
+          <div className={classes.modal__form_newArt__bar_img} id="newImages">
             {Array(5)
               .fill('')
               .map((_, index) => (
                 <div className={classes.modal__form_newArt__img} key={index}>
                   <input
-                    id={`fileInput-${index}`}
+                    id={`fileInputNew-${index}`}
                     type="file"
                     accept="image/*"
                     style={{ display: 'none' }}
@@ -111,7 +112,7 @@ const ArticleAddForm = () => {
                       className={classes.modal__form_newArt__img_cover}
                       onClick={() => {
                         const fileInput = document.getElementById(
-                          `fileInput-${index}`,
+                          `fileInputNew-${index}`,
                         )
                         if (fileInput) {
                           fileInput.click()
@@ -124,13 +125,13 @@ const ArticleAddForm = () => {
           </div>
         </div>
         <div className={classes.modal__form_newArt__block}>
-          <label htmlFor="price">Цена</label>
+          <label htmlFor="newArtprice">Цена</label>
           <input
-            id="price"
+            id="newArtprice"
             className={classes.modal__form_newArt__input_price}
             type="number"
             placeholder="₽"
-            {...register('price')}
+            {...register('priceNew')}
           />
         </div>
 
