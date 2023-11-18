@@ -42,18 +42,6 @@ export const articleList = api.injectEndpoints({
             ]
           : ['MyArticles'],
     }),
-    createArticle: builder.mutation<IArticle[], IArticleForm>({
-      query: (value) => ({
-        url: `adstext`,
-        method: 'POST',
-        body: {
-          title: value.title,
-          description: value.description,
-          price: value.price,
-        },
-      }),
-      invalidatesTags: ['MyArticles'],
-    }),
     deleteArticle: builder.mutation<IArticle[], number>({
       query: (id) => ({
         url: `ads/${id}`,
@@ -61,7 +49,7 @@ export const articleList = api.injectEndpoints({
       }),
       invalidatesTags: ['ArticleList', 'MyArticles'],
     }),
-    addArticle: builder.mutation<IArticle[], IArticleForm>({
+    createArticle: builder.mutation<IArticle[], IArticleForm>({
       query: (value) => {
         const { title, description, price, images } = value
         const params = new URLSearchParams()
@@ -92,7 +80,7 @@ export const articleList = api.injectEndpoints({
           body: formData,
         }
       },
-      invalidatesTags: ['Article', 'ArticleList'],
+      invalidatesTags: ['MyArticles', 'ArticleList'],
     }),
     editArticleText: builder.mutation<IArticle[], IArticleForm>({
       query: (value) => ({
@@ -104,7 +92,7 @@ export const articleList = api.injectEndpoints({
           price: value.price,
         },
       }),
-      invalidatesTags: ['Article', 'ArticleList'],
+      invalidatesTags: ['Article', 'ArticleList', 'MyArticles'],
     }),
     editArticleImg: builder.mutation<
       IArticle[],
@@ -115,7 +103,7 @@ export const articleList = api.injectEndpoints({
         method: 'POST',
         body: value.file,
       }),
-      invalidatesTags: ['Article'],
+      invalidatesTags: ['Article', 'ArticleList', 'MyArticles'],
     }),
     deleteArticleImg: builder.mutation<
       IArticle[],
@@ -133,7 +121,7 @@ export const articleList = api.injectEndpoints({
         method: 'POST',
         body: { text: value.text },
       }),
-      invalidatesTags: ['ArticleList', 'Reviews'],
+      invalidatesTags: ['Article', 'Reviews'],
     }),
   }),
 })
@@ -141,10 +129,9 @@ export const articleList = api.injectEndpoints({
 export const {
   useGetArticleDataQuery,
   useGetUserArticlesQuery,
-  useCreateArticleMutation,
   useDeleteArticleMutation,
   useGetArticleDataCommentsQuery,
-  useAddArticleMutation,
+  useCreateArticleMutation,
   useEditArticleTextMutation,
   useEditArticleImgMutation,
   useAddReviewMutation,
