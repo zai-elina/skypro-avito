@@ -116,6 +116,7 @@
 
 .modal__form_newArt__bar_img {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
   margin-bottom: 10px;
@@ -163,7 +164,18 @@
   object-fit: cover;
   z-index: 2;
 }
-
+.modal__form_newArt__img__delete {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
 @media screen and (max-width: 600px) {
   .modal__title {
     font-size: 24px;

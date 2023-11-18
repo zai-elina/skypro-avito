@@ -117,6 +117,16 @@ export const articleList = api.injectEndpoints({
       }),
       invalidatesTags: ['Article'],
     }),
+    deleteArticleImg: builder.mutation<
+      IArticle[],
+      { id: number; file_url: string }
+    >({
+      query: (value) => ({
+        url: `ads/${value.id}/image?file_url=${value.file_url}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Article'],
+    }),
     addReview: builder.mutation<IArticle[], { id: number; text: string }>({
       query: (value) => ({
         url: `ads/${value.id}/comments`,
@@ -138,4 +148,5 @@ export const {
   useEditArticleTextMutation,
   useEditArticleImgMutation,
   useAddReviewMutation,
+  useDeleteArticleImgMutation,
 } = articleList

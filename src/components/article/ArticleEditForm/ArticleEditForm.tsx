@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../../store/reduxHook'
 import { editArticleModal } from '../../../store/slices/articlesSlice'
 import { selectSelectedArtile } from '../../../store/selectors/articleSelectors'
 import {
+  useDeleteArticleImgMutation,
   useEditArticleImgMutation,
   useEditArticleTextMutation,
 } from '../../../store/services/articleList.api'
@@ -25,6 +26,7 @@ const ArticleEditForm = () => {
   const [selectedImages, setSelectedImages] = useState<File[]>([])
   const [editArticleText] = useEditArticleTextMutation()
   const [editArticleImg] = useEditArticleImgMutation()
+  const [deleteImg] = useDeleteArticleImgMutation()
 
   const onClose = () => {
     if (selectedImages.length > 0) {
@@ -46,6 +48,10 @@ const ArticleEditForm = () => {
     } else {
       console.error('Выбранный файл не является изображением')
     }
+  }
+
+  const handleImgDelete = async (imgUrl: string) => {
+    await deleteImg({ id: article.id, file_url: imgUrl })
   }
 
   const onSubmit = async (data: FieldValues) => {
@@ -103,11 +109,17 @@ const ArticleEditForm = () => {
         </div>
 
         <div className={classes.modal__form_newArt__block}>
-          <label htmlFor="images">Фотографии товара</label>
+          <label htmlFor="images">Фотографии товара не более 5</label>
           <div className={classes.modal__form_newArt__bar_img} id="images">
             {article?.images.map((image) => (
               <div className={classes.modal__form_newArt__img} key={image.id}>
                 <img src={`${hostDomain}/${image.url}`} alt="" />
+                <div
+                  className={classes.modal__form_newArt__img__delete}
+                  onClick={() => handleImgDelete(image.url)}
+                >
+                  ❌
+                </div>
               </div>
             ))}
             {Array(5 - article?.images.length)
