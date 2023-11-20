@@ -128,55 +128,16 @@
     width: 100%;
     padding: 0 20px;
   }
-  .articleImgContainer {
-    max-width: 100%;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-  .articleImgContainer::before {
-    content: '';
-    display: block;
-    width: 23px;
-    height: 23px;
-    background-color: transparent;
-    border-top: 2px solid #000000;
-    border-left: 2px solid #000000;
-    transform: rotate(-45deg);
-    position: absolute;
-    top: 24px;
-    left: 32px;
-    cursor: pointer;
-  }
-  .articleImg {
-    width: 100%;
-    min-width: 320px;
-    height: auto;
-    min-height: 320px;
-    margin: 0 0px;
-  }
-  .articleImgBar {
-    display: none;
-  }
-  .articleImgBarMob {
-    display: block;
-    width: 68px;
-    height: 8px;
-    position: absolute;
-    bottom: 20px;
-    left: calc(50% - 34px);
-    display: flex;
-    justify-content: space-between;
-  }
   .articlePrice {
     font-size: 18px;
     line-height: 25px;
     font-weight: 700;
     margin-bottom: 20px;
     margin-top: 20px;
+  }
+}
+@media screen and (max-width: 620px) {
+  .article {
+    margin-top: 53px;
   }
 }
