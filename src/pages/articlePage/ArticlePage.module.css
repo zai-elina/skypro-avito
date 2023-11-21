@@ -20,14 +20,16 @@
   }
 }
 @media screen and (max-width: 768px) {
-  .mainContainer {
-    padding: 0;
-  }
   .mainArticle,
   .mainCenterBlock {
     max-width: 1178px;
     width: 100%;
     padding: 0px;
     margin: 0 auto;
+  }
+}
+@media screen and (max-width: 620px) {
+  .mainContainer {
+    padding: 0;
   }
 }

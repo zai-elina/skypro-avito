@@ -6,7 +6,7 @@ import { selectSelectedArtile } from '../../../store/selectors/articleSelectors'
 const ArticleDesc: FC = () => {
   const article = useAppSelector(selectSelectedArtile)
   return (
-    <div>
+    <div className={classes.descContainer}>
       <h3 className={classes.title}>Описание товара</h3>
       <div className={classes.content}>
         <p className={classes.text}>{article.description}</p>
