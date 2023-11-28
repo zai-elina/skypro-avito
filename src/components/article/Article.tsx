@@ -25,6 +25,7 @@ import ArticleEditForm from './ArticleEditForm/ArticleEditForm'
 import Reviews from '../reviews/Reviews'
 import CloseButton from '../closeButton/CloseButton'
 import ArticleImg from './ArticleImg/ArticleImg'
+import { useMediaQuery } from 'react-responsive'
 
 interface IConstructorButtonArticle {
   authUserArticle: ReactNode
@@ -46,6 +47,9 @@ const Article: FC = () => {
   const comments = useAppSelector(selectAtricleComments)
   const activeEditModal = useAppSelector(selectEditModalOpen)
   const reviewsModal = useAppSelector(selectReviewsModalOpen)
+  const isMobile = useMediaQuery({
+    query: '(max-width: 620px)',
+  })
 
   useEffect(() => {
     window.scrollTo({
@@ -68,6 +72,14 @@ const Article: FC = () => {
 
   const onClickEditButton = () => {
     dispatch(editArticleModal(true))
+  }
+
+  const onClickReviewsButton = () => {
+    if (isMobile) {
+      navigate(`/article/${id}/reviews`)
+    } else {
+      dispatch(openReviewsModal(true))
+    }
   }
 
   const ConstructorButtonArticle: IConstructorButtonArticle = {
@@ -135,7 +147,7 @@ const Article: FC = () => {
               <p className={classes.articleTextInfo}>{user?.city}</p>
               <button
                 className={classes.buttonLink}
-                onClick={() => dispatch(openReviewsModal(true))}
+                onClick={onClickReviewsButton}
               >
                 {comments.length} отзывов
               </button>
