@@ -5,6 +5,7 @@ import { hostDomain } from '../../../constants'
 import defaultImage from '../../../assets/img/box.jpg'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
+import { useNavigate } from 'react-router-dom'
 
 interface IAtricleImg {
   images: IImage[]
@@ -13,6 +14,11 @@ interface IAtricleImg {
 
 const ArticleImg: FC<IAtricleImg> = ({ images, title }) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0)
+  const navigate = useNavigate()
+
+  const goBack = () => {
+    navigate(-1)
+  }
 
   const handleImageClick = (index: number) => {
     setActiveImageIndex(index)
@@ -65,6 +71,7 @@ const ArticleImg: FC<IAtricleImg> = ({ images, title }) => {
               onClick={() => handleImageClick(index)}
             >
               <img src={`${hostDomain}/${img.url}`} alt="" />
+              <div className={classes.goBack} onClick={goBack}></div>
             </div>
           ))}
         </Carousel>
