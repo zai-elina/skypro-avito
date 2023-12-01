@@ -9,7 +9,7 @@ const SkeletonCardsSection: FC<{ title: string }> = ({ title }) => {
       <h2>{title}</h2>
       <div className={classes.cardsContent}>
         <div className={classes.cards}>
-          {Array(8)
+          {Array(6)
             .fill('')
             .map(() => {
               const id = nanoid()

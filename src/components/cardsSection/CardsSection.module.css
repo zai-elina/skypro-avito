@@ -32,43 +32,14 @@
 @media screen and (max-width: 620px) {
   .cards {
     display: grid;
-    grid-template-columns: repeat(2, 137px);
-    grid-auto-rows: 293px;
     grid-gap: 10px 10px;
     justify-content: center;
   }
-  .cardsContent {
-    width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
-    right: 0;
-    left: 0;
-    top: 134px;
-    bottom: 84px;
-  }
-  .mainTitle {
-    font-size: 24px;
-    line-height: 29px;
-    color: #000000;
-    margin-bottom: 20px;
-    text-align: center;
-    position: relative;
-  }
-  .mainTitle::before {
-    content: '';
-    display: block;
-    width: 12px;
-    height: 12px;
-    background-color: transparent;
-    border-top: 2px solid #000000;
-    border-left: 2px solid #000000;
-    transform: rotate(-45deg);
-    position: absolute;
-    top: 9px;
-    left: 13px;
-    cursor: pointer;
-  }
-  .mainContainer {
-    padding: 50px 10px 84px;
+}
+@media screen and (max-width: 590px) {
+  .cards {
+    grid-template-columns: repeat(auto-fit,137px);
+    grid-auto-rows: 293px;
+    margin-bottom: 30px;
   }
 }
