@@ -1,6 +1,6 @@
 @media screen and (max-width: 620px) {
   .goBack {
-    z-index: 100;
+    z-index: 2;
     display: block;
     width: 23px;
     height: 23px;

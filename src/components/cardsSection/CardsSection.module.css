@@ -28,6 +28,9 @@
     display: grid;
     grid-template-columns: repeat(2, 270px);
   }
+  .mainContainer {
+    padding: 0 20px;
+  }
 }
 @media screen and (max-width: 620px) {
   .cards {
@@ -38,7 +41,7 @@
 }
 @media screen and (max-width: 590px) {
   .cards {
-    grid-template-columns: repeat(auto-fit,137px);
+    grid-template-columns: repeat(auto-fit, 137px);
     grid-auto-rows: 293px;
     margin-bottom: 30px;
   }

@@ -1,6 +1,9 @@
 import React, { FC } from 'react'
 import classes from './Footer.module.css'
 import { Link } from 'react-router-dom'
+import home from '../../../assets/img/icon_01.png'
+import add from '../../../assets/img/icon_02.png'
+import person from '../../../assets/img/icon_03.png'
 
 const Footer: FC = () => {
   return (
@@ -8,17 +11,17 @@ const Footer: FC = () => {
       <div className={classes.footerContainer}>
         <div className={classes.footerImg}>
           <Link to="/">
-            <img src="img/icon_01.png" alt="home" />
+            <img src={home} alt="home" />
           </Link>
         </div>
         <div className={classes.footerImg}>
           <Link to="/">
-            <img src="img/icon_02.png" alt="home" />
+            <img src={add} alt="home" />
           </Link>
         </div>
         <div className={classes.footerImg}>
           <Link to="/login">
-            <img src="img/icon_03.png" alt="home" />
+            <img src={person} alt="home" />
           </Link>
         </div>
       </div>

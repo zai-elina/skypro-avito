@@ -7,9 +7,7 @@
 }
 .profileSellSeller {
   display: flex;
-  align-items: top;
   flex-wrap: wrap;
-  justify-content: start;
 }
 .sellerLeft {
   display: flex;
@@ -42,40 +40,13 @@
   display: none;
 }
 @media screen and (max-width: 890px) {
-  .profileSellContent {
-    max-width: 834px;
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 580px) {
   .profileSellSeller {
     justify-content: center;
   }
   .sellerLeft {
-    display: none;
-    margin-right: 0px;
+    margin-right: 0;
   }
-  .sellerImg {
-    display: none;
-  }
-  .sellerRight {
-    width: 100%;
-  }
-  .sellerText {
-    margin-top: 6px;
-  }
-  .sellerImgMob {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    padding: 20px 0;
-  }
-  .imgMob {
-    display: block;
-    width: 132px;
-    height: 132px;
-    border-radius: 50%;
-    background-color: #f0f0f0;
+  .profileSell {
+    padding-top: 10px;
   }
 }
