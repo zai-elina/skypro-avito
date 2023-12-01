@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive'
 
 const SkeletonCard: FC = () => {
   const isMobile = useMediaQuery({
-    query: '(max-width: 620px)',
+    query: '(max-width: 590px)',
   })
   return (
     <div className={classes.cardContainer}>
