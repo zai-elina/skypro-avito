@@ -25,7 +25,6 @@ const AppRoutes: FC = () => {
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/register" element={<RegisterPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   )

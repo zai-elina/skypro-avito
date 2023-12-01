@@ -29,7 +29,7 @@
     grid-template-columns: repeat(2, 270px);
   }
 }
-@media screen and (max-width: 590px) {
+@media screen and (max-width: 620px) {
   .cards {
     display: grid;
     grid-template-columns: repeat(2, 137px);
@@ -69,6 +69,6 @@
     cursor: pointer;
   }
   .mainContainer {
-    padding: 85px 10px 84px;
+    padding: 50px 10px 84px;
   }
 }

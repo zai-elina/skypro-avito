@@ -6,6 +6,7 @@ import { IFormFieldsRegister } from '../../types'
 import { nanoid } from '@reduxjs/toolkit'
 import { useRegisterUserMutation } from '../../store/services/user.api'
 import { useNavigate } from 'react-router-dom'
+import Footer from '../../components/layout/footer/Footer'
 
 const formInputs = [
   {
@@ -133,6 +134,7 @@ const RegisterPage: FC = () => {
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

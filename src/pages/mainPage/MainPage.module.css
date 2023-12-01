@@ -8,7 +8,7 @@
   margin: 0 auto;
   padding: 31px 10px 0px;
 }
-@media screen and (max-width: 590px) {
+@media screen and (max-width: 620px) {
   .mainSearch {
     width: 100%;
     height: 55px;

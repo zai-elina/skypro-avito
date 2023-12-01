@@ -8,6 +8,7 @@ import { useLoginUserMutation } from '../../store/services/user.api'
 import { nanoid } from '@reduxjs/toolkit'
 import { useAppSelector } from '../../store/reduxHook'
 import { selectLoginError } from '../../store/selectors/userSelector'
+import Footer from '../../components/layout/footer/Footer'
 
 const formInputsLogin = [
   {
@@ -114,6 +115,7 @@ const LoginPage: FC = () => {
           </form>
         </div>
       </div>
+      <Footer/>
     </div>
   )
 }
