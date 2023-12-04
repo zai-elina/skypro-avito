@@ -7,7 +7,7 @@ const ReviewsPage: FC = () => {
   return (
     <main>
       <MainMenu />
-      <div style={{ marginTop: '70px', padding: '20px', position: 'relative' }}>
+      <div style={{ marginTop: '30px', padding: '20px', position: 'relative' }}>
         <ButtonBack />
         <Reviews />
       </div>

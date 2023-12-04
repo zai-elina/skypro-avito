@@ -17,7 +17,7 @@
   border-color: #d9d9d9;
   cursor: not-allowed;
 }
-@media screen and (max-width: 472px) {
+@media screen and (max-width: 620px) {
   .btn {
     width: 100% !important;
   }

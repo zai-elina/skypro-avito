@@ -6,22 +6,29 @@ import add from '../../../assets/img/icon_02.png'
 import person from '../../../assets/img/icon_03.png'
 
 const Footer: FC = () => {
+  const getLinkTo = () => {
+    const authUser = localStorage.getItem('access_token')
+    if (authUser) {
+      return '/profile'
+    }
+    return '/login'
+  }
   return (
     <div className={classes.footer}>
       <div className={classes.footerContainer}>
         <div className={classes.footerImg}>
           <Link to="/">
-            <img src={home} alt="home" />
+            <img src={home} alt="Главная" />
           </Link>
         </div>
         <div className={classes.footerImg}>
           <Link to="/">
-            <img src={add} alt="home" />
+            <img src={add} alt="Добавить объявление" />
           </Link>
         </div>
         <div className={classes.footerImg}>
-          <Link to="/login">
-            <img src={person} alt="home" />
+          <Link to={getLinkTo()}>
+            <img src={person} alt="Личный кабинет" />
           </Link>
         </div>
       </div>

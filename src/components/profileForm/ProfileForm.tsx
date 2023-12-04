@@ -92,7 +92,7 @@ const ProfileForm: FC = () => {
             <button
               className={classes.settingsChangePhoto}
               onClick={() => {
-                const fileInput = document.getElementById('fileInput')
+                const fileInput = document.getElementById('fileAvatar')
                 if (fileInput) {
                   fileInput.click()
                 }

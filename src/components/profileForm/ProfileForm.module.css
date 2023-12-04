@@ -99,3 +99,50 @@
 .settings__phone {
   width: 614px;
 }
+@media screen and (max-width: 890px) {
+  .profileSettings {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .settingsLeft {
+    margin-right: 0;
+  }
+  .mainProfile {
+    padding: 0 20px;
+  }
+}
+@media screen and (max-width: 620px) {
+  .profileTitle {
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: 0em;
+  }
+  .settingsForm {
+    width: 100%;
+    flex-direction: column;
+  }
+  .settingsForm input {
+    border-radius: 30px;
+    padding: 9px 17px;
+  }
+  .settingsForm input::placeholder {
+    font-size: 14px;
+    line-height: 21px;
+  }
+  .settingsForm input::placeholder {
+    font-size: 14px;
+    line-height: 21px;
+  }
+  .settingsForm label {
+    font-size: 14px;
+    line-height: 21px;
+    color: #c4c4c4;
+    margin-bottom: 6px;
+  }
+  .settings__fname,
+  .settings__lname,
+  .settings__city,
+  .settings__phone {
+    width: 100%;
+  }
+}
