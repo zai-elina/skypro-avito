@@ -59,16 +59,26 @@ const ArticleImg: FC<IAtricleImg> = ({ images, title }) => {
           infiniteLoop={true}
           onChange={(index) => setActiveImageIndex(index)}
         >
-          {images?.map((img, index) => (
-            <div
-              className={classes.articleImgBarItem}
-              key={img.id}
-              onClick={() => handleImageClick(index)}
-            >
-              <img src={`${hostDomain}/${img.url}`} alt="" />
-              <ButtonBack />
-            </div>
-          ))}
+          {images.length !== 0
+            ? images.map((img, index) => (
+                <div
+                  className={classes.articleImgBarItem}
+                  key={img.id}
+                  onClick={() => handleImageClick(index)}
+                >
+                  <img src={`${hostDomain}/${img.url}`} alt="" />
+                  <ButtonBack />
+                </div>
+              ))
+            : [''].map((_, index) => (
+                <div
+                  className={classes.articleImgBarItem}
+                  key={index}
+                >
+                  <img src={`${defaultImage}`} alt={title} />
+                  <ButtonBack />
+                </div>
+              ))}
         </Carousel>
       </div>
     </div>

@@ -22,7 +22,7 @@ const Footer: FC = () => {
           </Link>
         </div>
         <div className={classes.footerImg}>
-          <Link to="/">
+          <Link to="/article/creation">
             <img src={add} alt="Добавить объявление" />
           </Link>
         </div>

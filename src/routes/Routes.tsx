@@ -10,6 +10,7 @@ import SellerProfilePage from '../pages/sellerProfilePage/SellerProfilePage'
 import ProfilePage from '../pages/profilePage/ProfilePage'
 import NotFound from '../pages/notFound/NotFound'
 import ReviewsPage from '../pages/reviewsPage/ReviewsPage'
+import CreateArticlePage from '../pages/createArticlePage/CreateArticlePage'
 
 const AppRoutes: FC = () => {
   return (
@@ -21,6 +22,7 @@ const AppRoutes: FC = () => {
         <Route path="/user/:id" element={<SellerProfilePage />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/article/creation" element={<CreateArticlePage />} />
         </Route>
       </Route>
       <Route path="/login" element={<LoginPage />} />
