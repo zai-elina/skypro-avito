@@ -24,9 +24,9 @@ const Card: FC<IPropsCard> = ({ article }) => {
             )}
           </Link>
         </div>
-        <div>
+        <div className={classes.cardDesc}>
           <Link to={`/article/${id}`}>
-            <h3 className={classes.cardTitle}>{title}</h3>
+            <div className={classes.cardTitle}>{title}</div>
           </Link>
           <p className={classes.cardPrice}>{price}₽</p>
           <p className={classes.cardPlace}>{user.city}</p>

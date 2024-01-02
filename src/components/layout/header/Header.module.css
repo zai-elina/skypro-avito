@@ -1,5 +1,11 @@
 .header {
   background-color: #009ee4;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
 }
 .headerNav {
   max-width: 1178px;

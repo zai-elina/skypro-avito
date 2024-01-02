@@ -12,6 +12,7 @@
   width: 100%;
   margin: 0 auto;
   background-color: #ffffff;
+  padding-top: 79px;
 }
 @media screen and (max-width: 590px) {
   .container {
@@ -19,5 +20,10 @@
     min-width: 320px;
     min-height: 100vh;
     background-color: #ffffff;
+  }
+}
+@media screen and (max-width: 620px) {
+  .container {
+    padding-top: 20px;
   }
 }

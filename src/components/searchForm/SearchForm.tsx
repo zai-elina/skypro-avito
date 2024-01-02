@@ -7,7 +7,7 @@ import { changeSearchResultArticleList } from '../../store/slices/articlesSlice'
 
 const SearchForm: FC = () => {
   const isMobile = useMediaQuery({
-    query: '(max-width: 590px)',
+    query: '(max-width: 620px)',
   })
   const [search, setSearch] = useState('')
   const articleList = useAppSelector(selectArtticleList)

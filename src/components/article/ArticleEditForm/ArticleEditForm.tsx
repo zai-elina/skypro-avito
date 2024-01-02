@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 import classes from './ArticleEditForm.module.css'
 import ButtonMain from '../../layout/buttons/buttonMain/ButtonMain'
@@ -12,27 +12,51 @@ import {
 } from '../../../store/services/articleList.api'
 import CloseButton from '../../closeButton/CloseButton'
 import { hostDomain } from '../../../constants'
+import { useMediaQuery } from 'react-responsive'
+import { useNavigate } from 'react-router-dom'
+import { IArticle } from '../../../types'
 
 const ArticleEditForm = () => {
   const article = useAppSelector(selectSelectedArtile)
+  const [articleData, setArticleData] = useState<IArticle>(article)
   const { register, handleSubmit } = useForm({
     defaultValues: {
-      title: article.title ? article.title : '',
-      description: article.description ? article.description : '',
-      price: article.price ? article.price : '',
+      title: articleData.title ? articleData.title : '',
+      description: articleData.description ? articleData.description : '',
+      price: articleData.price ? articleData.price : '',
     },
   })
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const [selectedImages, setSelectedImages] = useState<File[]>([])
   const [editArticleText] = useEditArticleTextMutation()
-  const [editArticleImg] = useEditArticleImgMutation()
-  const [deleteImg] = useDeleteArticleImgMutation()
+  const [editArticleImg, { data: dataEditImage, error: errorEditImage }] =
+    useEditArticleImgMutation()
+  const [deleteImg, { data: dataDelete, error: errorDelete }] =
+    useDeleteArticleImgMutation()
+  const isMobile = useMediaQuery({
+    query: '(max-width: 620px)',
+  })
+
+  useEffect(() => {
+    if (dataEditImage && !errorEditImage) {
+      setArticleData(dataEditImage)
+    }
+  }, [dataEditImage, errorEditImage])
+
+  useEffect(() => {
+    if (dataDelete && !errorDelete) {
+      setArticleData(dataDelete)
+    }
+  }, [dataDelete, errorDelete])
 
   const onClose = () => {
     if (selectedImages.length > 0) {
       setSelectedImages([])
     }
-    dispatch(editArticleModal(false))
+    isMobile
+      ? navigate(`/article/${articleData.id}/`)
+      : dispatch(editArticleModal(false))
   }
 
   const onChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,7 +75,7 @@ const ArticleEditForm = () => {
   }
 
   const handleImgDelete = async (imgUrl: string) => {
-    await deleteImg({ id: article.id, file_url: imgUrl })
+    await deleteImg({ id: articleData.id, file_url: imgUrl })
   }
 
   const onSubmit = async (data: FieldValues) => {
@@ -59,7 +83,7 @@ const ArticleEditForm = () => {
 
     try {
       await editArticleText({
-        id: article.id,
+        id: articleData.id,
         title: title,
         description: description,
         price: price,
@@ -68,7 +92,7 @@ const ArticleEditForm = () => {
         const formData = new FormData()
         formData.append(`file`, image)
         editArticleImg({
-          id: article.id,
+          id: articleData.id,
           file: formData,
         })
       })
@@ -111,7 +135,7 @@ const ArticleEditForm = () => {
         <div className={classes.modal__form_newArt__block}>
           <label htmlFor="images">Фотографии товара не более 5</label>
           <div className={classes.modal__form_newArt__bar_img} id="images">
-            {article?.images.map((image) => (
+            {articleData?.images?.map((image) => (
               <div className={classes.modal__form_newArt__img} key={image.id}>
                 <img src={`${hostDomain}/${image.url}`} alt="" />
                 <div
@@ -122,7 +146,7 @@ const ArticleEditForm = () => {
                 </div>
               </div>
             ))}
-            {Array(5 - article?.images.length)
+            {Array(5 - articleData?.images.length)
               .fill('')
               .map((_, index) => (
                 <div className={classes.modal__form_newArt__img} key={index}>

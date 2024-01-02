@@ -164,26 +164,15 @@
   object-fit: cover;
   z-index: 2;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 620px) {
+  .modal__form_newArt {
+    margin-bottom: 50px;
+  }
   .modal__title {
     font-size: 24px;
     line-height: 29px;
     padding: 0 0 0 26px;
     position: relative;
-  }
-  .modal__title::before {
-    content: '';
-    display: block;
-    width: 12px;
-    height: 12px;
-    background-color: transparent;
-    border-top: 2px solid #000000;
-    border-left: 2px solid #000000;
-    transform: rotate(-45deg);
-    position: absolute;
-    top: 9px;
-    left: 0;
-    cursor: pointer;
   }
   .modal__modal__form_newArt {
     margin-top: 22px;
@@ -209,6 +198,7 @@
     border-radius: 30px;
     font-size: 16px;
     line-height: 1;
+    margin-left: 0;
   }
   .modal__form_newArt__input {
     width: 100%;
