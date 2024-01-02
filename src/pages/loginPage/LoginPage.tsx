@@ -6,8 +6,10 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { IFormFieldsRegister } from '../../types'
 import { useLoginUserMutation } from '../../store/services/user.api'
 import { nanoid } from '@reduxjs/toolkit'
-import { useAppSelector } from '../../store/reduxHook'
+import { useAppDispatch, useAppSelector } from '../../store/reduxHook'
 import { selectLoginError } from '../../store/selectors/userSelector'
+import Footer from '../../components/layout/footer/Footer'
+import { setUserToken } from '../../store/slices/userSlice'
 
 const formInputsLogin = [
   {
@@ -42,17 +44,19 @@ const LoginPage: FC = () => {
   const [loginUser, { data }] = useLoginUserMutation()
   const navigate = useNavigate()
   const error = useAppSelector(selectLoginError)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     if (data) {
       localStorage.setItem('access_token', data.access_token)
       localStorage.setItem('refresh_token', data.refresh_token)
+      dispatch(setUserToken(data.access_token))
       navigate('/')
     }
-  }, [data, navigate])
+  }, [data, dispatch, navigate])
 
   useEffect(() => {
-    if (error.data) {
+    if (error && error?.data) {
       let text = error.data.detail
       if (text === 'Incorrect email') {
         text = 'Неправильная почта'
@@ -64,8 +68,7 @@ const LoginPage: FC = () => {
   }, [error])
 
   const onSubmit: SubmitHandler<IFormFieldsRegister> = async (data) => {
-    const res = await loginUser(data)
-    console.log(res)
+    await loginUser(data)
   }
 
   return (
@@ -84,7 +87,7 @@ const LoginPage: FC = () => {
               const { type, name, placeholder, rules } = input
               const id = nanoid()
               return (
-                <div key={id} style={{ width: '100%' }}>
+                <div key={id} style={{ width: '100%', position: 'relative' }}>
                   <Input
                     type={type}
                     name={name}
@@ -93,7 +96,13 @@ const LoginPage: FC = () => {
                     rules={rules}
                   />
                   {errors[name as keyof IFormFieldsRegister] && (
-                    <p style={{ color: 'red' }}>
+                    <p
+                      style={{
+                        color: 'red',
+                        position: 'absolute',
+                        bottom: '-20px',
+                      }}
+                    >
                       {errors[name as keyof IFormFieldsRegister]?.message}
                     </p>
                   )}
@@ -109,6 +118,7 @@ const LoginPage: FC = () => {
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

@@ -116,9 +116,10 @@
 
 .modal__form_newArt__bar_img {
   display: flex;
+  flex-wrap: wrap;
+  row-gap: 12px;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 10px;
   overflow: hidden;
 }
@@ -130,6 +131,7 @@
   left: 0;
   background-color: #f0f0f0;
   z-index: -1;
+  cursor: pointer;
 }
 .modal__form_newArt__img_cover::after,
 .modal__form_newArt__img_cover::before {
@@ -145,6 +147,10 @@
 .modal__form_newArt__img_cover::before {
   transform: rotate(90deg);
 }
+.modal__form_newArt__img_cover:hover::after,
+.modal__form_newArt__img_cover:hover::before {
+  background-color: #009ee4;
+}
 .modal__form_newArt__img {
   width: 90px;
   height: 90px;
@@ -155,32 +161,28 @@
 .modal__form_newArt__img img {
   display: block;
   width: 100%;
-  height: auto;
-  -o-object-fit: cover;
+  height: 100%;
   object-fit: cover;
   z-index: 2;
 }
-
-@media screen and (max-width: 600px) {
+.modal__form_newArt__img__delete {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+@media screen and (max-width: 620px) {
   .modal__title {
     font-size: 24px;
     line-height: 29px;
     padding: 0 0 0 26px;
     position: relative;
-  }
-  .modal__title::before {
-    content: '';
-    display: block;
-    width: 12px;
-    height: 12px;
-    background-color: transparent;
-    border-top: 2px solid #000000;
-    border-left: 2px solid #000000;
-    transform: rotate(-45deg);
-    position: absolute;
-    top: 9px;
-    left: 0;
-    cursor: pointer;
   }
   .modal__modal__form_newArt {
     margin-top: 22px;

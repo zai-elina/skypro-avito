@@ -25,6 +25,7 @@ import ArticleEditForm from './ArticleEditForm/ArticleEditForm'
 import Reviews from '../reviews/Reviews'
 import CloseButton from '../closeButton/CloseButton'
 import ArticleImg from './ArticleImg/ArticleImg'
+import { useMediaQuery } from 'react-responsive'
 
 interface IConstructorButtonArticle {
   authUserArticle: ReactNode
@@ -46,6 +47,9 @@ const Article: FC = () => {
   const comments = useAppSelector(selectAtricleComments)
   const activeEditModal = useAppSelector(selectEditModalOpen)
   const reviewsModal = useAppSelector(selectReviewsModalOpen)
+  const isMobile = useMediaQuery({
+    query: '(max-width: 620px)',
+  })
 
   useEffect(() => {
     window.scrollTo({
@@ -62,11 +66,20 @@ const Article: FC = () => {
     if (deleteError) {
       alert('Произошла ошибка')
     }
-    navigate('/')
+    navigate('/profile')
+    dispatch(openDeleteModal(false))
   }
 
-  const onClickEditButton = async () => {
-    dispatch(editArticleModal(true))
+  const onClickEditButton = () => {
+    isMobile ? navigate('/article/edit') : dispatch(editArticleModal(true))
+  }
+
+  const onClickReviewsButton = () => {
+    if (isMobile) {
+      navigate(`/article/${id}/reviews`)
+    } else {
+      dispatch(openReviewsModal(true))
+    }
   }
 
   const ConstructorButtonArticle: IConstructorButtonArticle = {
@@ -83,7 +96,7 @@ const Article: FC = () => {
           }}
         />{' '}
         <ButtonMain
-          text="Снять с публикации"
+          text="Удалить"
           onClick={onClickDeleteButton}
           style={{
             whiteSpace: 'pre-line',
@@ -134,7 +147,7 @@ const Article: FC = () => {
               <p className={classes.articleTextInfo}>{user?.city}</p>
               <button
                 className={classes.buttonLink}
-                onClick={() => dispatch(openReviewsModal(true))}
+                onClick={onClickReviewsButton}
               >
                 {comments.length} отзывов
               </button>
@@ -164,7 +177,7 @@ const Article: FC = () => {
         closeModal={() => dispatch(openDeleteModal(false))}
       >
         <CloseButton onClick={() => dispatch(openDeleteModal(false))} />
-        <div style={{ marginTop: '30px' }}>Хотите скрыть объявление?</div>
+        <div style={{ marginTop: '30px' }}>Хотите удалить объявление?</div>
         <div
           style={{
             display: 'flex',
@@ -172,7 +185,7 @@ const Article: FC = () => {
             marginTop: '20px',
           }}
         >
-          <ButtonMain text="Скрыть" onClick={onClickDeleteArticle} />
+          <ButtonMain text="Удалить" onClick={onClickDeleteArticle} />
         </div>
       </Modal>
       <Modal

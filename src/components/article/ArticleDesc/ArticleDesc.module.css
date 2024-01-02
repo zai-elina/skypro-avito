@@ -29,3 +29,8 @@
     padding: 0 0 84px;
   }
 }
+@media screen and (max-width: 620px) {
+  .descContainer {
+    padding: 0 20px;
+  }
+}

@@ -66,6 +66,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .containerSignup {
+    background-color: #fff;
+  }
   .modalBlock {
     left: calc(50% - 160px);
     top: 55px;

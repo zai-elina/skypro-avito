@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import classes from './Logo.module.css'
 import { useMediaQuery } from 'react-responsive'
+import logo from '../../../assets/img/logo.png'
+import logoMob from '../../../assets/img/logo-mob.png'
 
 const Logo = () => {
   const isMobile = useMediaQuery({
@@ -10,9 +12,9 @@ const Logo = () => {
   return (
     <Link to="/">
       {isMobile ? (
-        <img className={classes.logoMob} src="../img/logo-mob.png" alt="logo" />
+        <img className={classes.logoMob} src={logoMob} alt="logo" />
       ) : (
-        <img className={classes.logo} src="../img/logo.png" alt="logo" />
+        <img className={classes.logo} src={logo} alt="logo" />
       )}
     </Link>
   )

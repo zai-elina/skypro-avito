@@ -19,6 +19,17 @@ const Input: FC<InputProps> = ({
   register,
   rules,
 }) => {
+  if (type === 'password') {
+    return (
+      <input
+        className={classes.modalInput}
+        type={type}
+        placeholder={placeholder}
+        {...register(name as keyof IFormFieldsRegister, rules)}
+        autoComplete="on"
+      />
+    )
+  }
   return (
     <input
       className={classes.modalInput}

@@ -33,7 +33,7 @@
 .modal__btn_close_line:hover::before {
   background-color: #0080c1;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 620px) {
   .modal__btn_close {
     display: none;
   }

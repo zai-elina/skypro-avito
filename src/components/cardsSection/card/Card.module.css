@@ -26,6 +26,7 @@
   object-fit: cover;
 }
 .cardTitle {
+  display: block;
   height: 52px;
   font-size: 22px;
   font-weight: 500;
@@ -47,6 +48,11 @@
   color: #5f5f5f;
 }
 @media screen and (max-width: 590px) {
+  .cardContainer {
+    margin: 0;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+  }
   .card {
     width: 137px;
     height: 293px;
@@ -62,15 +68,13 @@
   }
   .cardImage img {
     width: 100%;
-    height: 100%;
+    height: 120px;
     display: block;
-    -o-object-fit: cover;
     object-fit: cover;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
   }
   .cardTitle {
-    height: 51px;
     font-size: 14px;
     line-height: 17px;
     color: #009ee4;
@@ -86,5 +90,9 @@
     font-size: 12px;
     line-height: 16px;
     color: #5f5f5f;
+    margin-top: 5px;
+  }
+  .cardDesc {
+    padding: 10px;
   }
 }

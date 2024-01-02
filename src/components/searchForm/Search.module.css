@@ -35,7 +35,7 @@
   font-size: 16px;
   line-height: 24px;
 }
-@media screen and (max-width: 590px) {
+@media screen and (max-width: 620px) {
   .searchForm {
     margin-left: 10px;
     max-width: 1044px;

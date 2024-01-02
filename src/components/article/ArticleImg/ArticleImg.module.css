@@ -43,49 +43,23 @@
 .articleImgBarMob {
   display: none;
 }
-@media screen and (max-width: 768px) {
-  .articleImgContainer {
-    max-width: 100%;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-  .articleImgContainer::before {
-    content: '';
-    display: block;
-    width: 23px;
-    height: 23px;
-    background-color: transparent;
-    border-top: 2px solid #000000;
-    border-left: 2px solid #000000;
-    transform: rotate(-45deg);
-    position: absolute;
-    top: 24px;
-    left: 32px;
-    cursor: pointer;
-  }
-  .articleImg {
-    width: 100%;
-    min-width: 320px;
-    height: auto;
-    min-height: 320px;
-    margin: 0 0px;
-  }
+@media screen and (max-width: 620px) {
+  .articleImg,
   .articleImgBar {
     display: none;
   }
   .articleImgBarMob {
     display: block;
-    width: 68px;
-    height: 8px;
-    position: absolute;
-    bottom: 20px;
-    left: calc(50% - 34px);
-    display: flex;
-    justify-content: space-between;
+    margin-top: 12px;
+  }
+  .articleImgBarItem {
+    object-fit: cover;
+    width: 100%;
+    min-width: 100%;
+    height: 338px;
+    margin: 0;
+    bottom: 0;
+    background-color: none;
+    border: 0;
   }
 }

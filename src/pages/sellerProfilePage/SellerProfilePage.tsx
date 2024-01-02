@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom'
 import { useAppSelector } from '../../store/reduxHook'
 import { selectArtticleList } from '../../store/selectors/articleSelectors'
 import { IArticle } from '../../types'
+import ButtonBack from '../../components/layout/buttons/buttonBack/ButtonBack'
 
 const SellerProfilePage: FC = () => {
   const { id } = useParams()
@@ -30,7 +31,10 @@ const SellerProfilePage: FC = () => {
       <div className={classes.mainContainer}>
         <div className={classes.mainCenterBlock}>
           <MainMenu />
-          <h2>Профиль продавца</h2>
+          <div style={{ position: 'relative' }}>
+            <ButtonBack />
+            <h2 className={classes.title}>Профиль продавца</h2>
+          </div>
         </div>
         <ProfileInfo />
         <CardsSection title="Товары продавца" cards={sellerArticle} />

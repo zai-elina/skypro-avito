@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { IArticle } from '../../../types'
 import dayjs from 'dayjs'
 import { hostDomain } from '../../../constants'
-
+import defaultImage from '../../../assets/img/box.jpg'
 interface IPropsCard {
   article: IArticle
 }
@@ -20,13 +20,13 @@ const Card: FC<IPropsCard> = ({ article }) => {
             {images.length !== 0 ? (
               <img src={`${hostDomain}/${images[0].url}`} alt={title} />
             ) : (
-              <img src="./img/box.jpg" alt={title} />
+              <img src={`${defaultImage}`} alt={title} />
             )}
           </Link>
         </div>
-        <div>
+        <div className={classes.cardDesc}>
           <Link to={`/article/${id}`}>
-            <h3 className={classes.cardTitle}>{title}</h3>
+            <div className={classes.cardTitle}>{title}</div>
           </Link>
           <p className={classes.cardPrice}>{price}₽</p>
           <p className={classes.cardPlace}>{user.city}</p>

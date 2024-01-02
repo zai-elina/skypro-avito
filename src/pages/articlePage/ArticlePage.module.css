@@ -12,17 +12,7 @@
 }
 @media screen and (max-width: 890px) {
   .mainContainer {
-    padding: 20px 0px 84px;
-  }
-  .mainCenterBlock {
-    margin: 0 auto;
     padding: 0 20px;
-  }
-}
-
-@media screen and (max-width: 620px) {
-  .mainContainer {
-    padding: 20px 0px 84px;
   }
   .mainCenterBlock {
     margin: 0 auto;
@@ -30,10 +20,16 @@
   }
 }
 @media screen and (max-width: 768px) {
-  .mainArticle {
+  .mainArticle,
+  .mainCenterBlock {
     max-width: 1178px;
     width: 100%;
-    padding: 55px 0 0px;
+    padding: 0px;
     margin: 0 auto;
+  }
+}
+@media screen and (max-width: 620px) {
+  .mainContainer {
+    padding: 0;
   }
 }

@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../store/reduxHook'
 import { selectAddModalOpen } from '../../store/selectors/articleSelectors'
 import { openAddModal } from '../../store/slices/articlesSlice'
 import ArticleAddForm from '../../components/article/ArticleAddForm/ArticleAddForm'
+import Footer from '../../components/layout/footer/Footer'
 
 const LayoutPage: FC = () => {
   const activeAddModal = useAppSelector(selectAddModalOpen)
@@ -23,6 +24,7 @@ const LayoutPage: FC = () => {
       >
         <ArticleAddForm />
       </Modal>
+      <Footer />
     </div>
   )
 }

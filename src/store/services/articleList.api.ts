@@ -31,27 +31,37 @@ export const articleList = api.injectEndpoints({
     }),
     getUserArticles: builder.query<IArticle[], unknown>({
       query: () => ({ url: `ads/me` }),
-    }),
-    createArticle: builder.mutation<IArticle[], IArticleForm>({
-      query: (value) => ({
-        url: `adstext`,
-        method: 'POST',
-        body: {
-          title: value.title,
-          description: value.description,
-          price: value.price,
-        },
-      }),
-      invalidatesTags: ['Profile'],
+      providesTags: (result) =>
+        Array.isArray(result)
+          ? [
+              ...result.map(({ id }) => ({
+                type: 'MyArticles' as const,
+                id,
+              })),
+              'MyArticles',
+            ]
+          : ['MyArticles'],
     }),
     deleteArticle: builder.mutation<IArticle[], number>({
       query: (id) => ({
         url: `ads/${id}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['ArticleList'],
+      invalidatesTags: ['ArticleList', 'MyArticles'],
     }),
-    editArticle: builder.mutation<IArticle[], IArticleForm>({
+    createArticle: builder.mutation<IArticle, IArticleForm>({
+      query: (value) => ({
+        url: `adstext`,
+        method: 'POST',
+        body: {
+          title: value.title,
+          description: value.description,
+          price: value.price ? value.price : 0,
+        },
+      }),
+      invalidatesTags: ['MyArticles'],
+    }),
+    editArticleText: builder.mutation<IArticle, IArticleForm>({
       query: (value) => ({
         url: `ads/${value.id}`,
         method: 'PATCH',
@@ -61,10 +71,10 @@ export const articleList = api.injectEndpoints({
           price: value.price,
         },
       }),
-      invalidatesTags: ['Article'],
+      invalidatesTags: ['Article', 'ArticleList', 'MyArticles'],
     }),
     editArticleImg: builder.mutation<
-      IArticle[],
+      IArticle,
       { id: number; file: FormData }
     >({
       query: (value) => ({
@@ -72,9 +82,19 @@ export const articleList = api.injectEndpoints({
         method: 'POST',
         body: value.file,
       }),
+      invalidatesTags: ['Article', 'ArticleList', 'MyArticles'],
+    }),
+    deleteArticleImg: builder.mutation<
+      IArticle,
+      { id: number; file_url: string }
+    >({
+      query: (value) => ({
+        url: `ads/${value.id}/image?file_url=${value.file_url}`,
+        method: 'DELETE',
+      }),
       invalidatesTags: ['Article'],
     }),
-    addReview: builder.mutation<IArticle[], { id: number; text: string }>({
+    addReview: builder.mutation<IArticle, { id: number; text: string }>({
       query: (value) => ({
         url: `ads/${value.id}/comments`,
         method: 'POST',
@@ -88,10 +108,11 @@ export const articleList = api.injectEndpoints({
 export const {
   useGetArticleDataQuery,
   useGetUserArticlesQuery,
-  useCreateArticleMutation,
   useDeleteArticleMutation,
   useGetArticleDataCommentsQuery,
-  useEditArticleMutation,
+  useCreateArticleMutation,
+  useEditArticleTextMutation,
   useEditArticleImgMutation,
   useAddReviewMutation,
+  useDeleteArticleImgMutation,
 } = articleList

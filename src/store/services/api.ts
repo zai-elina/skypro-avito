@@ -40,7 +40,6 @@ const baseQueryWithReauth = async (
 
   const forceLogout = () => {
     localStorage.clear()
-    window.location.href = '/login'
   }
 
   const token = localStorage.getItem('access_token')
@@ -90,7 +89,7 @@ const baseQueryWithReauth = async (
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: baseQueryWithReauth,
-  tagTypes: ['ArticleList', 'Article', 'Profile', 'Reviews'],
+  tagTypes: ['ArticleList', 'Article', 'Profile', 'Reviews','MyArticles'],
   endpoints: (builder) => ({
     getArticleListData: builder.query<IArticle[], unknown>({
       query: () => `ads`,
