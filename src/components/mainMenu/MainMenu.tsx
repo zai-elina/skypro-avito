@@ -4,7 +4,7 @@ import classes from './MainMenu.module.css'
 import { useNavigate } from 'react-router-dom'
 import ButtonMain from '../layout/buttons/buttonMain/ButtonMain'
 import { useMediaQuery } from 'react-responsive'
-import { logOutUser } from '../../store/slices/userSlice'
+import { logOutUser, setUserToken } from '../../store/slices/userSlice'
 import { useAppDispatch } from '../../store/reduxHook'
 
 const MainMenu: FC = () => {
@@ -21,6 +21,7 @@ const MainMenu: FC = () => {
   const logOut = () => {
     localStorage.clear()
     dispatch(logOutUser({}))
+    dispatch(setUserToken(''))
     navigate('/')
   }
   return (

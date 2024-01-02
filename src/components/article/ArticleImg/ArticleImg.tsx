@@ -34,7 +34,7 @@ const ArticleImg: FC<IAtricleImg> = ({ images, title }) => {
   return (
     <div className={classes.articleImgContainer}>
       <div className={classes.articleImg}>
-        {images && images.length !== 0 ? (
+        {images && images?.length !== 0 ? (
           <img
             src={`${hostDomain}/${images[activeImageIndex].url}`}
             alt={title}

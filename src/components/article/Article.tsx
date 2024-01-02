@@ -71,7 +71,7 @@ const Article: FC = () => {
   }
 
   const onClickEditButton = () => {
-    dispatch(editArticleModal(true))
+    isMobile ? navigate('/article/edit') : dispatch(editArticleModal(true))
   }
 
   const onClickReviewsButton = () => {

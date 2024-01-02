@@ -61,7 +61,7 @@ export const articleList = api.injectEndpoints({
       }),
       invalidatesTags: ['MyArticles'],
     }),
-    editArticleText: builder.mutation<IArticle[], IArticleForm>({
+    editArticleText: builder.mutation<IArticle, IArticleForm>({
       query: (value) => ({
         url: `ads/${value.id}`,
         method: 'PATCH',
@@ -74,7 +74,7 @@ export const articleList = api.injectEndpoints({
       invalidatesTags: ['Article', 'ArticleList', 'MyArticles'],
     }),
     editArticleImg: builder.mutation<
-      IArticle[],
+      IArticle,
       { id: number; file: FormData }
     >({
       query: (value) => ({
@@ -85,7 +85,7 @@ export const articleList = api.injectEndpoints({
       invalidatesTags: ['Article', 'ArticleList', 'MyArticles'],
     }),
     deleteArticleImg: builder.mutation<
-      IArticle[],
+      IArticle,
       { id: number; file_url: string }
     >({
       query: (value) => ({
@@ -94,7 +94,7 @@ export const articleList = api.injectEndpoints({
       }),
       invalidatesTags: ['Article'],
     }),
-    addReview: builder.mutation<IArticle[], { id: number; text: string }>({
+    addReview: builder.mutation<IArticle, { id: number; text: string }>({
       query: (value) => ({
         url: `ads/${value.id}/comments`,
         method: 'POST',

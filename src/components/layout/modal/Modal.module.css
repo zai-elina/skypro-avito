@@ -1,6 +1,7 @@
 .modal {
   height: 100vh;
   width: 100vw;
+  max-width: 150vw;
   background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
   z-index: 5;
@@ -12,6 +13,7 @@
   opacity: 0;
   pointer-events: none;
   transition: 0.5s;
+  overflow: auto;
 }
 .modal.active {
   opacity: 1;
@@ -22,10 +24,14 @@
   border-radius: 12px;
   background-color: #fff;
   width: 50vw;
-  max-height: 100vh;
   transform: scale(0.5);
   transition: 0.5s;
 }
 .modalContent.active {
   transform: scale(1);
+}
+@media screen and (max-width: 1080px) {
+  .modalContent {
+    width: 80vw;
+  }
 }

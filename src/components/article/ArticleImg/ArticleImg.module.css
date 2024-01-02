@@ -50,6 +50,7 @@
   }
   .articleImgBarMob {
     display: block;
+    margin-top: 12px;
   }
   .articleImgBarItem {
     object-fit: cover;

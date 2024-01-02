@@ -11,6 +11,7 @@ import ProfilePage from '../pages/profilePage/ProfilePage'
 import NotFound from '../pages/notFound/NotFound'
 import ReviewsPage from '../pages/reviewsPage/ReviewsPage'
 import CreateArticlePage from '../pages/createArticlePage/CreateArticlePage'
+import EditArticlePage from '../pages/editArticlePage/EditArticlePage'
 
 const AppRoutes: FC = () => {
   return (
@@ -23,6 +24,7 @@ const AppRoutes: FC = () => {
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/article/creation" element={<CreateArticlePage />} />
+          <Route path="/article/edit" element={<EditArticlePage />} />
         </Route>
       </Route>
       <Route path="/login" element={<LoginPage />} />
